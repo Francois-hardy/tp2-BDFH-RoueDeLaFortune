@@ -1,6 +1,5 @@
 import architecture.Buzzer;
 
-import java.util.concurrent.TimeUnit;
 import architecture.Ecran;
 import architecture.RoueJeu;
 import joueurs.Candidat;

@@ -9,6 +9,7 @@ public class Candidat {
     }
     
     public void ajouterGain(int argent) {
+
     }
 
     public void traiterGain(String gain) {
