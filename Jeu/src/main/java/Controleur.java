@@ -5,13 +5,11 @@ import java.util.concurrent.TimeUnit;
 public class Controleur {
     public static void main(String[] args) throws InterruptedException {
         Ecran ecran = new Ecran();
-
         ecran.afficherPhrase();
-
         ecran.definirLaPhrase();
-
         ecran.afficherEcran();
-        for(int i = 0; i<14;i++){
+        ecran.afficherUneLettre();
+        for(int i = 0; i<13;i++){
             ecran.afficherUneLettre();
             TimeUnit.SECONDS.sleep(1);
         }
