@@ -1,9 +1,11 @@
+import Architecture.Buzzer;
 import Architecture.Ecran;
 
 import java.util.concurrent.TimeUnit;
 
 public class Controleur {
     public static void main(String[] args) throws InterruptedException {
+        new Buzzer();
         Ecran ecran = new Ecran();
         ecran.afficherPhrase();
         ecran.definirLaPhrase();
