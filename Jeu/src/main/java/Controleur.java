@@ -1,7 +1,9 @@
 import Architecture.Ecran;
 
+import java.util.concurrent.TimeUnit;
+
 public class Controleur {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Ecran ecran = new Ecran();
 
         ecran.afficherPhrase();
@@ -11,6 +13,7 @@ public class Controleur {
         ecran.afficherEcran();
         for(int i = 0; i<14;i++){
             ecran.afficherUneLettre();
+            TimeUnit.SECONDS.sleep(1);
         }
 
 
