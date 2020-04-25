@@ -1,7 +1,8 @@
-package Architecture;
+package architecture;
 
 
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 public class Ecran {
     private final char[][] tableauEcran = new char[4][14];
@@ -18,7 +19,6 @@ public class Ecran {
         this.tableauEcran[0][13] = '!';
         this.tableauEcran[3][0] = '!';
         this.tableauEcran[3][13] = '!';
-        //afficherEcran();
     }
     public void afficherEcran(){
         for (int i = 0; i<4; i++){
@@ -30,14 +30,13 @@ public class Ecran {
         System.out.println(" ");
     }
 
-    public void afficherPhrase() {
+    public void choixDeLaPhrase() {
         //String phrase = "Un feu /d'artifice";
         //String phrase = "Une /bougie";
-        //String this.phrase = "Un bac à /sable";
+        String phrase = "Un bac à /sable";
 
         int col = 3;
         int ligne = 2;
-        String phrase = "Un feu /d'artifice";
         for(int i = 0; i< phrase.length(); i++){
             if(phrase.charAt(i) == '/'){
                 ligne++;
@@ -55,8 +54,8 @@ public class Ecran {
                 }
             }
         }
-
     }
+
     public void afficherUneLettre() {
         int taille = liste.size();
         int random = (int) (Math.random() * (taille));
@@ -65,20 +64,28 @@ public class Ecran {
         liste.remove(random);
         afficherEcran();
     }
-    public void definirLaPhrase() {
+
+    public void inscriptionALEcran() {
         for (int i = 0; i<4; i++){
             for (int j = 0; j<14; j++){
-                if(tableauEcran[i][j] != ' '){
-                    if(tableauEcran[i][j] != '!'){
-                        if(tableauEcran[i][j] != '\''){
-                            int[] ajout = {i,j};
-                            liste.add(ajout);
-                            tableauEcran[i][j] = '_';
-                            //System.out.println("B = "+ resultatTab[1][6]);
-                        }
-                    }
+                if((tableauEcran[i][j] != ' ') && (tableauEcran[i][j] != '!') && (tableauEcran[i][j] != '\'')){
+                    int[] ajout = {i,j};
+                    liste.add(ajout);
+                    tableauEcran[i][j] = '_';
                 }
             }
+        }
+    }
+
+    public void afficherToutesLesLettresUneParUne() {
+        try{
+            while (true){
+                afficherUneLettre();
+                TimeUnit.SECONDS.sleep(1);
+            }
+
+        }
+        catch (Exception ignored){
         }
     }
 }

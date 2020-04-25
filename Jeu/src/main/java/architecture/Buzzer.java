@@ -1,4 +1,4 @@
-package Architecture;
+package architecture;
 
 public class Buzzer {
 }
