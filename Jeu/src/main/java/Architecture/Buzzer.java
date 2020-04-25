@@ -11,7 +11,11 @@ public class Buzzer extends JFrame implements ActionListener {
 
     public JPanel pan = new JPanel();
     public JButton bouton = new JButton("Buzzer");
-    public Integer boutonON = 0;
+    public static Integer boutonON = 0;
+
+    public static int getBoutonON(){
+        return boutonON;
+    }
 
     public Buzzer(){
         this.setTitle("Roue de ta daronne");

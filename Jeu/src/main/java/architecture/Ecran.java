@@ -82,6 +82,10 @@ public class Ecran {
             while (true){
                 afficherUneLettre();
                 TimeUnit.SECONDS.sleep(1);
+                if (Buzzer.getBoutonON() == 1) {
+                    return;
+                }
+
             }
 
         }
