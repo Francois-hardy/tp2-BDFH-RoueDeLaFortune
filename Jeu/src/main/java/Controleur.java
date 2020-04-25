@@ -9,7 +9,10 @@ public class Controleur {
         ecran.definirLaPhrase();
 
         ecran.afficherEcran();
-        ecran.afficherUneLettre();
+        for(int i = 0; i<14;i++){
+            ecran.afficherUneLettre();
+        }
+
 
         //lancement du jeu
         //lancemnt d'un tour de main

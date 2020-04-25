@@ -9,7 +9,7 @@ public class Ecran {
     private String phrase = "Un feu /d'artifice";
     private HashMap<Integer, Integer> pairIndicesPhrase = new HashMap<>();
     private ArrayList<int[]> liste = new ArrayList<>();
-    private char[][] resultatTab;
+    private char[][] resultatTab = new char[4][14];
 
     public Ecran(){
         for (int i = 0; i<4; i++){
@@ -28,9 +28,9 @@ public class Ecran {
             for (int j = 0; j<14; j++){
                 System.out.print(this.tableauEcran[i][j]+" ");
             }
-            System.out.println("");
+            System.out.println(" ");
         }
-        System.out.println("");
+        System.out.println(" ");
     }
 
     public void afficherPhrase() {
@@ -47,7 +47,7 @@ public class Ecran {
             }
             else{
                 tableauEcran[ligne-1][col-1] = this.phrase.charAt(i);
-
+                resultatTab[ligne-1][col-1] = this.phrase.charAt(i);
                 if(col >= 13){
                     ligne++;
                     col = 3;
@@ -57,29 +57,28 @@ public class Ecran {
                 }
             }
         }
-        resultatTab = tableauEcran;
-        System.out.println("A = "+ resultatTab[1][6]);
 
     }
     public void afficherUneLettre() {
         int taille = liste.size();
         int random = (int) (Math.random() * (taille));
-        //System.out.println(Arrays.toString(liste.get(5)));
-        int[] tableauCaseAAfficher = liste.get(5);
-        //System.out.println(tableauCaseAAfficher[0] + " " +tableauCaseAAfficher[1]);
-        System.out.println("C = "+ resultatTab[1][6]);
-        this.tableauEcran[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] = resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]];
+        int[] tableauCaseAAfficher = liste.get(random);
+        tableauEcran[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] = resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]];
+        liste.remove(random);
         afficherEcran();
     }
     public void definirLaPhrase() {
         for (int i = 0; i<4; i++){
             for (int j = 0; j<14; j++){
                 if(tableauEcran[i][j] != ' '){
-                    int[] tab1 = {i,j};
-                    liste.add(tab1);
-                    tableauEcran[i][j] = '_';
-                    System.out.println("B = "+ resultatTab[1][6]);
-
+                    if(tableauEcran[i][j] != '!'){
+                        if(tableauEcran[i][j] != '\''){
+                            int[] ajout = {i,j};
+                            liste.add(ajout);
+                            tableauEcran[i][j] = '_';
+                            //System.out.println("B = "+ resultatTab[1][6]);
+                        }
+                    }
                 }
             }
         }
