@@ -2,14 +2,11 @@ package Architecture;
 
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Ecran {
-    private char[][] tableauEcran = new char[4][14];
-    private String phrase = "Un feu /d'artifice";
-    private HashMap<Integer, Integer> pairIndicesPhrase = new HashMap<>();
-    private ArrayList<int[]> liste = new ArrayList<>();
-    private char[][] resultatTab = new char[4][14];
+    private final char[][] tableauEcran = new char[4][14];
+    private final ArrayList<int[]> liste = new ArrayList<>();
+    private final char[][] resultatTab = new char[4][14];
 
     public Ecran(){
         for (int i = 0; i<4; i++){
@@ -40,14 +37,15 @@ public class Ecran {
 
         int col = 3;
         int ligne = 2;
-        for(int i = 0; i<this.phrase.length();i++){
-            if(this.phrase.charAt(i) == '/'){
+        String phrase = "Un feu /d'artifice";
+        for(int i = 0; i< phrase.length(); i++){
+            if(phrase.charAt(i) == '/'){
                 ligne++;
                 col = 3;
             }
             else{
-                tableauEcran[ligne-1][col-1] = this.phrase.charAt(i);
-                resultatTab[ligne-1][col-1] = this.phrase.charAt(i);
+                tableauEcran[ligne-1][col-1] = phrase.charAt(i);
+                resultatTab[ligne-1][col-1] = phrase.charAt(i);
                 if(col >= 13){
                     ligne++;
                     col = 3;
