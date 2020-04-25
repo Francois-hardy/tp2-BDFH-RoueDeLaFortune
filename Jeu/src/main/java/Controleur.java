@@ -3,8 +3,13 @@ import Architecture.Ecran;
 public class Controleur {
     public static void main(String[] args) {
         Ecran ecran = new Ecran();
-        ecran.definirLaPhrase();
+
         ecran.afficherPhrase();
+
+        ecran.definirLaPhrase();
+
+        ecran.afficherEcran();
+        ecran.afficherUneLettre();
 
         //lancement du jeu
         //lancemnt d'un tour de main
