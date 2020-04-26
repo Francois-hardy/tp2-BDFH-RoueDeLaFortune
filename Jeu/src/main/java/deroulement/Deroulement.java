@@ -39,7 +39,7 @@ public class Deroulement {
             while (Ecran.resteLettre()){
                 System.out.println("Le candidat "+candidatMain.getNom()+" tourne la roue...");
                 RoueJeu.lancerRoue(getCandidatMain());
-                //Candidat.afficherLesSoldes();
+                Candidat.afficherLesSoldes();
             }
             System.out.println("Fin de la manche " + mancheActuelle);
             Candidat.enregistrerSolde();
@@ -65,6 +65,5 @@ public class Deroulement {
         else if (tabCandidats[2] == candidatMain){
             setCandidatMain(tabCandidats[0]);
         }
-        System.out.println("Suivant...");
     }
 }

@@ -4,7 +4,6 @@ import architecture.Ecran;
 import deroulement.Deroulement;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Random;
 
@@ -17,7 +16,7 @@ public class Candidat {
     public int solde;
     public static int[] soldeTotalJoueur = new int[3];
     public static int[][] soldeTotal = new int[4][3];
-    private static ArrayList<Character> listeCharUtilise = new ArrayList<>();
+    private static final ArrayList<Character> listeCharUtilise = new ArrayList<>();
 
     public Candidat(String nom){
         this.nom = nom;
@@ -76,8 +75,10 @@ public class Candidat {
 
     public void traiterGain(String gain) {
         try{
-            char c;
+
             int argent = Integer.parseInt(gain);
+
+            char c;
             Random rand;
 
             do{
@@ -93,8 +94,8 @@ public class Candidat {
             }
             else{
                 System.out.println("Perdu...");
+                Deroulement.nextCandidat();
             }
-
 
         }
         catch (Exception e){
@@ -109,8 +110,29 @@ public class Candidat {
                         tabCandidat.solde = 0;
                     }
                 }
+                choisirLettre();
+
             }
         }
+    }
+
+    private void choisirLettre() {
+        char c;
+        Random rand;
+
+        do{
+            rand = new Random();
+            c = (char)(rand.nextInt(26) + 97);
+        } while (listeCharUtilise.contains(c));
+
+        listeCharUtilise.add(c);
+        Collections.sort(listeCharUtilise);
+        //System.out.println("Liste : " +listeCharUtilise);
+        if(!Ecran.afficherToutesLesLettres(c)){
+            System.out.println("Perdu...");
+            Deroulement.nextCandidat();
+        }
+
     }
 
     public static void afficherLesSoldes() {
