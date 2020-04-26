@@ -12,7 +12,7 @@ public class Controleur {
         Candidat candidat3 = new Candidat("Jacque");
         Buzzer Buzzer = new Buzzer();
         Ecran.allumerEcran();
-        RoueJeu roue = new RoueJeu();
+        RoueJeu.creerRoueJeu();
         Ecran.choixDeLaPhrase();
         Ecran.inscriptionCacheALEcran();
         Ecran.afficherEcran();
@@ -20,29 +20,7 @@ public class Controleur {
         Deroulement.setCandidatMain(candidat1);
 
         System.out.println("Manche 1");
-        Deroulement.setRoue(roue);
         Deroulement.lancerManche();
-
-
-
-
-
-
-
-
-
-
-            //lancement du jeu
-            //lancemnt d'un tour de main
-            //apparition des cases 1 par 1
-            //celui qui trouve prend la main
-            //manche 1
-            //affichage de la pharse
-
-
-            //Tableau de 4 * 14
-            //24 cases sur la grande roue
-            //24 cases sur la petite roue
 
     }
 }

@@ -18,10 +18,6 @@ public class Deroulement {
 
     public static void lancerManche() {
         System.out.println("Le candidat "+candidatMain.getNom()+" tourne la roue...");
-        roue.lancerRoue(getCandidatMain());
-    }
-
-    public static void setRoue(RoueJeu roueADef) {
-        roue = roueADef;
+        RoueJeu.lancerRoue(getCandidatMain());
     }
 }
