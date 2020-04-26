@@ -6,7 +6,8 @@ import java.util.concurrent.TimeUnit;
 
 public class Ecran {
     private final char[][] tableauEcran = new char[4][14];
-    private final ArrayList<int[]> liste = new ArrayList<>();
+    private final ArrayList<int[]> listeIndices = new ArrayList<>();
+    private final ArrayList<int[]> listeMemeLettre = new ArrayList<>();
     private final char[][] resultatTab = new char[4][14];
 
     public Ecran(){
@@ -57,20 +58,20 @@ public class Ecran {
     }
 
     public void afficherUneLettre() {
-        int taille = liste.size();
+        int taille = listeIndices.size();
         int random = (int) (Math.random() * (taille));
-        int[] tableauCaseAAfficher = liste.get(random);
+        int[] tableauCaseAAfficher = listeIndices.get(random);
         tableauEcran[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] = resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]];
-        liste.remove(random);
+        listeIndices.remove(random);
         afficherEcran();
     }
 
-    public void inscriptionALEcran() {
+    public void inscriptionCacheALEcran() {
         for (int i = 0; i<4; i++){
             for (int j = 0; j<14; j++){
                 if((tableauEcran[i][j] != ' ') && (tableauEcran[i][j] != '!') && (tableauEcran[i][j] != '\'')){
                     int[] ajout = {i,j};
-                    liste.add(ajout);
+                    listeIndices.add(ajout);
                     tableauEcran[i][j] = '_';
                 }
             }
@@ -91,5 +92,17 @@ public class Ecran {
         }
         catch (Exception ignored){
         }
+    }
+    public void afficherToutesLesLettres(char lettre) {
+        int taille = listeIndices.size();
+        for(int i = 0; i<taille-2;i++){
+            int[] tableauCaseAAfficher = listeIndices.get(i);
+            if(resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] == lettre){
+                tableauEcran[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] = resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]];
+                listeIndices.remove(i);
+            }
+        }
+
+        afficherEcran();
     }
 }

@@ -14,12 +14,10 @@ public class Controleur {
         Buzzer Buzzer = new Buzzer();
         Ecran ecran = new Ecran();
         ecran.choixDeLaPhrase();
-        ecran.inscriptionALEcran();
+        ecran.inscriptionCacheALEcran();
         ecran.afficherEcran();
-        ecran.afficherUneLettre();
-        ecran.afficherUneLettre();
-
-        ecran.afficherToutesLesLettresUneParUne();
+        ecran.afficherToutesLesLettres('a');
+        //ecran.afficherToutesLesLettresUneParUne();
 
         RoueJeu roue = new RoueJeu();
 
