@@ -18,9 +18,8 @@ public class Controleur {
         ecran.afficherEcran();
         ecran.afficherToutesLesLettres('a');
         ecran.afficherToutesLesLettres('b');
-        ecran.afficherToutesLesLettres('s');
-        ecran.afficherToutesLesLettres('e');
-        //ecran.afficherToutesLesLettresUneParUne();
+
+        ecran.afficherToutesLesLettresUneParUne();
 
         //RoueJeu roue = new RoueJeu();
 
