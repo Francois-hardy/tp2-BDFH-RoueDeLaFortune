@@ -108,11 +108,8 @@ public class Ecran {
         try{
             while (true){
                 afficherUneLettre();
-                TimeUnit.SECONDS.sleep(1);
-                if (Buzzer.getBoutonON() == 1) {
-                    afficherResultat();
-                    return;
-                }
+                TimeUnit.MILLISECONDS.sleep(100);
+
 
             }
 
