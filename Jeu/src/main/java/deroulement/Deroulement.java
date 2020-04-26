@@ -21,7 +21,7 @@ public class Deroulement {
     public static void setCandidats(){
         candidat1 = new Candidat("Pierre");
         candidat2 = new Candidat("Paul");
-        candidat3 = new Candidat("Jacque");
+        candidat3 = new Candidat("Jacques");
         tabCandidats = new Candidat[]{candidat1, candidat2, candidat3};
     }
 

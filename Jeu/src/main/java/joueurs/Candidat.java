@@ -87,7 +87,7 @@ public class Candidat {
 
             listeCharUtilise.add(c);
             Collections.sort(listeCharUtilise);
-            System.out.println("Liste : " +listeCharUtilise);
+            //System.out.println("Liste : " +listeCharUtilise);
             if(Ecran.afficherToutesLesLettres(c)){
                 ajouterGain(argent);
             }

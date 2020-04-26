@@ -128,7 +128,7 @@ public class Ecran {
         for(int i = 0; i<taille;i++){
             taille = listeIndices.size();
             tableauCaseAAfficher = listeIndices.get(i);
-            System.out.println("TAILLE : "+listeIndices.size());
+            //System.out.println("TAILLE : "+listeIndices.size());
             if(resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] == lettre){
                 tableauEcran[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] = resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]];
                 listeIndices.remove(i);
@@ -137,7 +137,6 @@ public class Ecran {
                 trouve = true;
             }
             else if(lettre == 'a'){
-                taille = listeIndices.size();
                 if(resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] == 'à' || resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] == 'â'){
                     tableauEcran[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] = resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]];
                     listeIndices.remove(i);
@@ -148,7 +147,6 @@ public class Ecran {
 
             }
             else if(lettre == 'e'){
-                taille = listeIndices.size();
                 if(resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] == 'é' || resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] == 'è' || resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] == 'ê'){
                     tableauEcran[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] = resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]];
                     listeIndices.remove(i);
