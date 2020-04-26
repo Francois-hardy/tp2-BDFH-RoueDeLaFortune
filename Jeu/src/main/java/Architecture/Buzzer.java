@@ -2,12 +2,10 @@ package architecture;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.concurrent.TimeUnit;
 import javax.swing.*;
 
 public class Buzzer extends JFrame implements ActionListener {
 
-    public JPanel pan = new JPanel();
     public JButton bouton = new JButton("Buzzer");
     public static Integer boutonON = 0;
 

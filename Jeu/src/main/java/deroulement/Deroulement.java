@@ -8,8 +8,8 @@ public class Deroulement {
     public static RoueJeu roue;
 
     public static void setCandidatMain(Candidat candidat){
-        System.out.println("Le candidat "+candidatMain+" gagne la main !");
         candidatMain = candidat;
+        System.out.println("Le candidat "+candidatMain.getNom()+" gagne la main !");
     }
 
     private static Candidat getCandidatMain(){
@@ -17,7 +17,7 @@ public class Deroulement {
     }
 
     public static void lancerManche() {
-        System.out.println("Le candidat "+candidatMain+" tourne la roue...");
+        System.out.println("Le candidat "+candidatMain.getNom()+" tourne la roue...");
         roue.lancerRoue(getCandidatMain());
     }
 
