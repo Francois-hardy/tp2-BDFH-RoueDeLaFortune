@@ -69,7 +69,7 @@ public class Ecran {
     public void inscriptionCacheALEcran() {
         for (int i = 0; i<4; i++){
             for (int j = 0; j<14; j++){
-                if((tableauEcran[i][j] != ' ') && (tableauEcran[i][j] != '!') && (tableauEcran[i][j] != '\'')){
+                if((tableauEcran[i][j] != ' ') && (tableauEcran[i][j] != '!') && (tableauEcran[i][j] != '\'' ) && (tableauEcran[i][j] != '?') && (tableauEcran[i][j] != '-')){
                     int[] ajout = {i,j};
                     listeIndices.add(ajout);
                     tableauEcran[i][j] = '_';
