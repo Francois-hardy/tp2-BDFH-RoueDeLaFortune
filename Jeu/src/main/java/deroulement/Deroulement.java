@@ -30,29 +30,39 @@ public class Deroulement {
     }
 
     public static void lancerManche() {
-        mancheActuelle++;
-        System.out.println("Manche "+ mancheActuelle);
-        Ecran.choixDeLaPhrase();
-        Ecran.inscriptionCacheALEcran();
-        Ecran.afficherEcran();
-        while (Ecran.resteLettre()){
-            System.out.println("Le candidat "+candidatMain.getNom()+" tourne la roue...");
-            RoueJeu.lancerRoue(getCandidatMain());
-            Candidat.afficherLesSoldes();
+        if(mancheActuelle <4){
+            mancheActuelle++;
+            System.out.println("Manche "+ mancheActuelle);
+            Ecran.choixDeLaPhrase();
+            Ecran.inscriptionCacheALEcran();
+            Ecran.afficherEcran();
+            while (Ecran.resteLettre()){
+                System.out.println("Le candidat "+candidatMain.getNom()+" tourne la roue...");
+                RoueJeu.lancerRoue(getCandidatMain());
+                Candidat.afficherLesSoldes();
+            }
+            System.out.println("Fin de la manche " + mancheActuelle);
+            Candidat.enregistrerSolde();
+            Candidat.clearSolde();
+            lancerManche();
         }
-        System.out.println("Fin de la manche");
+        else {
+            Candidat.afficherLesSoldesTotals();
+            System.out.println("Le finaliste est : " + Candidat.enFinal());
+        }
+
 
     }
 
     public static void nextCandidat() {
         if (tabCandidats[0] == candidatMain){
-            candidatMain = tabCandidats[1];
+            setCandidatMain(tabCandidats[1]);
         }
         else if (tabCandidats[1] == candidatMain){
-            candidatMain = tabCandidats[2];
+            setCandidatMain(tabCandidats[2]);
         }
         else if (tabCandidats[2] == candidatMain){
-            candidatMain = tabCandidats[0];
+            setCandidatMain(tabCandidats[0]);
         }
         System.out.println("Suivant...");
     }

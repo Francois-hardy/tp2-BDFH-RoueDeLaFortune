@@ -76,12 +76,7 @@ public class Ecran {
     }
 
     public static boolean resteLettre() {
-        if(listeIndices.size() <= 0) {
-            return false;
-        }
-        else{
-            return true;
-        }
+        return listeIndices.size() > 0;
     }
 
     public static void afficherUneLettre() {
@@ -94,6 +89,7 @@ public class Ecran {
     }
 
     public static void inscriptionCacheALEcran() {
+        listeIndices.clear();
         for (int i = 0; i<4; i++){
             for (int j = 0; j<14; j++){
                 if((tableauEcran[i][j] != ' ') && (tableauEcran[i][j] != '!') && (tableauEcran[i][j] != '\'' ) && (tableauEcran[i][j] != '?') && (tableauEcran[i][j] != '-')){
