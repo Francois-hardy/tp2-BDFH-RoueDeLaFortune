@@ -1,6 +1,8 @@
 package architecture;
 
 
+import deroulement.Deroulement;
+
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
@@ -10,7 +12,7 @@ public class Ecran {
     private final static ArrayList<int[]> listeMemeLettre = new ArrayList<>();
     private final static char[][] resultatTab = new char[4][14];
 
-    public static void allumerEcran(){
+    public static void creerEcran(){
         for (int i = 0; i<4; i++){
             for (int j = 0; j<14; j++){
                 tableauEcran[i][j] = ' ';
@@ -110,8 +112,10 @@ public class Ecran {
         catch (Exception ignored){
         }
     }
-    public static void afficherToutesLesLettres(char lettre) {
+    public static boolean afficherToutesLesLettres(char lettre) {
         int taille = listeIndices.size();
+        boolean trouve = false;
+        System.out.println("Le candidat "+ Deroulement.getCandidatMain().getNom()+" propose la lettre "+lettre);
 
         for(int i = 0; i<taille;i++){
             taille = listeIndices.size();
@@ -119,12 +123,14 @@ public class Ecran {
             if(resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] == lettre){
                 tableauEcran[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] = resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]];
                 listeIndices.remove(i);
+                trouve = true;
             }
             else if(lettre == 'a'){
                 tableauCaseAAfficher = listeIndices.get(i);
                 if(resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] == 'à' || resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] == 'â'){
                     tableauEcran[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] = resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]];
                     listeIndices.remove(i);
+                    trouve = true;
                 }
             }
             else if(lettre == 'e'){
@@ -132,9 +138,11 @@ public class Ecran {
                 if(resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] == 'é' || resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] == 'è' || resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] == 'ê'){
                     tableauEcran[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] = resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]];
                     listeIndices.remove(i);
+                    trouve = true;
                 }
             }
         }
         afficherEcran();
+        return trouve;
     }
 }

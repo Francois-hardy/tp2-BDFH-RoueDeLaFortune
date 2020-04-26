@@ -5,22 +5,21 @@ import architecture.RoueJeu;
 import deroulement.Deroulement;
 import joueurs.Candidat;
 
+import static deroulement.Deroulement.candidat1;
+
 public class Controleur {
     public static void main(String[] args) {
-        Candidat candidat1 = new Candidat("Pierre");
-        Candidat candidat2 = new Candidat("Paul");
-        Candidat candidat3 = new Candidat("Jacque");
+
         Buzzer Buzzer = new Buzzer();
-        Ecran.allumerEcran();
+
+        Deroulement.setCandidats();
+        Ecran.creerEcran();
         RoueJeu.creerRoueJeu();
         Ecran.choixDeLaPhrase();
         Ecran.inscriptionCacheALEcran();
         Ecran.afficherEcran();
         Ecran.afficherToutesLesLettresUneParUne();
         Deroulement.setCandidatMain(candidat1);
-
-        System.out.println("Manche 1");
         Deroulement.lancerManche();
-
     }
 }
