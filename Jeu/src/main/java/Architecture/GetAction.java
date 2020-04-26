@@ -3,7 +3,7 @@ package architecture;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
-public class GetAction extends AbstractAction {
+public class GetAction { /* extends AbstractAction {
     public Buzzer fenetre;
     public String texteUtilisateur = fenetre.getTextField().getText();
 
@@ -15,5 +15,5 @@ public class GetAction extends AbstractAction {
     public void actionPerformed(ActionEvent e) {
 
         fenetre.getLabel().setText(texteUtilisateur);
-    }
+    } */
 }

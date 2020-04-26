@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
-public class Buzzer extends JFrame implements ActionListener {
+public class Buzzer { /* extends JFrame implements ActionListener {
 
     public JButton bouton = new JButton("Buzzer");
     public JButton bouton1 = new JButton(new GetAction(this, "Je valide"));
@@ -67,5 +67,6 @@ public class Buzzer extends JFrame implements ActionListener {
 
     public JLabel getLabel(){
         return label;
-    }
+    }*/
 }
+
