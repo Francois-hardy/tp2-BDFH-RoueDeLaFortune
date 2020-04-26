@@ -3,6 +3,7 @@ package joueurs;
 import architecture.Ecran;
 import deroulement.Deroulement;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import static deroulement.Deroulement.*;
@@ -14,6 +15,7 @@ public class Candidat {
     public int solde;
     public static int[] soldeTotalJoueur = new int[3];
     public static int[][] soldeTotal = new int[4][3];
+    private static ArrayList<Character> listeCharUtilise = new ArrayList<>();
 
     public Candidat(String nom){
         this.nom = nom;
@@ -58,6 +60,10 @@ public class Candidat {
         }
     }
 
+    public static void resetManche() {
+        listeCharUtilise.clear();
+    }
+
     public String getNom(){
         return this.nom;
     }
@@ -72,6 +78,12 @@ public class Candidat {
             int argent = Integer.parseInt(gain);
             Random rand = new Random();
             char c = (char)(rand.nextInt(26) + 97);
+            while (listeCharUtilise.contains(c)){
+                rand = new Random();
+                c = (char)(rand.nextInt(26) + 97);
+            }
+            listeCharUtilise.add(c);
+
             if(Ecran.afficherToutesLesLettres(c)){
                 ajouterGain(argent);
             }

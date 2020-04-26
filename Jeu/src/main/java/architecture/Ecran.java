@@ -9,7 +9,6 @@ import java.util.concurrent.TimeUnit;
 public class Ecran {
     private final static char[][] tableauEcran = new char[4][14];
     private final static ArrayList<int[]> listeIndices = new ArrayList<>();
-    private final static ArrayList<int[]> listeMemeLettre = new ArrayList<>();
     private final static char[][] resultatTab = new char[4][14];
 
     public static void creerEcran(){
@@ -131,7 +130,7 @@ public class Ecran {
                 trouve = true;
             }
             else if(lettre == 'a'){
-                tableauCaseAAfficher = listeIndices.get(i);
+                taille = listeIndices.size();
                 if(resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] == 'à' || resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] == 'â'){
                     tableauEcran[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] = resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]];
                     listeIndices.remove(i);
@@ -139,7 +138,7 @@ public class Ecran {
                 }
             }
             else if(lettre == 'e'){
-                tableauCaseAAfficher = listeIndices.get(i);
+                taille = listeIndices.size();
                 if(resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] == 'é' || resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] == 'è' || resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] == 'ê'){
                     tableauEcran[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] = resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]];
                     listeIndices.remove(i);

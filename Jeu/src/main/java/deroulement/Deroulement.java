@@ -44,6 +44,7 @@ public class Deroulement {
             System.out.println("Fin de la manche " + mancheActuelle);
             Candidat.enregistrerSolde();
             Candidat.clearSolde();
+            Candidat.resetManche();
             lancerManche();
         }
         else {

@@ -3,7 +3,6 @@ import architecture.Buzzer;
 import architecture.Ecran;
 import architecture.RoueJeu;
 import deroulement.Deroulement;
-import joueurs.Candidat;
 
 import static deroulement.Deroulement.candidat1;
 
