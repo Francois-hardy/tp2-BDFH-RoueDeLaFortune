@@ -7,7 +7,11 @@ public class Candidat {
     public Candidat(String nom){
         this.nom = nom;
     }
-    
+
+    public String getNom(){
+        return this.nom;
+    }
+
     public void ajouterGain(int argent) {
 
     }

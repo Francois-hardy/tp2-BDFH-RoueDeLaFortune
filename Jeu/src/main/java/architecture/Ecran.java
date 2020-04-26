@@ -14,17 +14,33 @@ public class Ecran {
         for (int i = 0; i<4; i++){
             for (int j = 0; j<14; j++){
                 this.tableauEcran[i][j] = ' ';
+                this.resultatTab[i][j] = ' ';
             }
         }
         this.tableauEcran[0][0] = '!';
         this.tableauEcran[0][13] = '!';
         this.tableauEcran[3][0] = '!';
         this.tableauEcran[3][13] = '!';
+
+        this.resultatTab[0][0] = '!';
+        this.resultatTab[0][13] = '!';
+        this.resultatTab[3][0] = '!';
+        this.resultatTab[3][13] = '!';
     }
     public void afficherEcran(){
         for (int i = 0; i<4; i++){
             for (int j = 0; j<14; j++){
                 System.out.print(this.tableauEcran[i][j]+" ");
+            }
+            System.out.println(" ");
+        }
+        System.out.println(" ");
+    }
+
+    private void afficherResultat(){
+        for (int i = 0; i<4; i++){
+            for (int j = 0; j<14; j++){
+                System.out.print(this.resultatTab[i][j]+" ");
             }
             System.out.println(" ");
         }
@@ -84,6 +100,7 @@ public class Ecran {
                 afficherUneLettre();
                 TimeUnit.SECONDS.sleep(1);
                 if (Buzzer.getBoutonON() == 1) {
+                    this.afficherResultat();
                     return;
                 }
 
@@ -104,12 +121,14 @@ public class Ecran {
                 listeIndices.remove(i);
             }
             else if(lettre == 'a'){
+                tableauCaseAAfficher = listeIndices.get(i);
                 if(resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] == 'à' || resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] == 'â'){
                     tableauEcran[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] = resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]];
                     listeIndices.remove(i);
                 }
             }
             else if(lettre == 'e'){
+                tableauCaseAAfficher = listeIndices.get(i);
                 if(resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] == 'é' || resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] == 'è' || resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] == 'ê'){
                     tableauEcran[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] = resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]];
                     listeIndices.remove(i);
