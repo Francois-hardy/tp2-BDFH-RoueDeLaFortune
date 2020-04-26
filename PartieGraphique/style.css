@@ -1,0 +1,65 @@
+#wheel {
+	width: 50%;
+}
+
+#fleche {
+	margin-bottom: -22px;
+}
+
+#affichage {
+    background-color: #e06602;
+    padding: 1em 2em;
+    text-align: center;
+    border-radius: 40px;
+    border: 4px double black;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+#affichage div.word {
+    display: inline-block;
+}
+
+#affichage div.word div {
+    display: block;
+    width: 50px;
+    height: 65px;
+    margin: 2px;
+    border: 2px solid #43759f;
+    float: left;
+    line-height: 65px;
+    font-size: 40px;
+    border-color: #eee;
+}
+
+#affichage div.space {
+    display: inline-block;
+    width: 50px;
+    height: 65px;
+    margin: 2px;
+    border: 2px solid #e06602;
+    line-height: 65px;
+}
+
+#interaction button {
+    text-transform: uppercase;
+    z-index: 1000;
+    border: 4px double #fff;
+    background-color: #e06602;
+    padding: 6px 14px;
+    color: white;
+    font-family: inherit;
+    font-size: 12pt;
+}
+
+#interaction #montant {
+    float: right;
+    position: relative;
+    padding: 10px;
+    border: 2px black solid;
+    width: 200px;
+    margin: 5px;
+    background-color: #e06602;
+    font-size: 14pt;
+    font-weight: bold;
+}

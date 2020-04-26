@@ -1,0 +1,31 @@
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<div class="container">
+	<div id="jeu">
+		<div id="interaction">
+			<div class="row justify-content-center">
+				<div id="affichage"></div>
+			</div>
+			<div class="row justify-content-center">
+				<div id="boutons">
+				        <button id="tourner">Tourner la roue</button>
+				        <button id="voyelle">Acheter une voyelle</button>
+				        <button id="nouveau">Nouvelle Partie</button>
+				        <div id="montant">Montant : <span id="money">0</span>
+				        	€
+				        </div>
+				    </div>
+			</div>
+		</div>
+		<div class="row justify-content-center">
+			<img id="fleche" src="fleche.png"/>
+		</div>
+		<div class="row justify-content-center">
+			<img id="wheel" src="roue.png" data-rotation="0" />
+		</div>
+	</div>
+</div>
+
+
+<script src="affichage.js"></script>
