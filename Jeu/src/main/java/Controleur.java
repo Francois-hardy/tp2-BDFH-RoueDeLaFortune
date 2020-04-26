@@ -9,7 +9,7 @@ import static deroulement.Deroulement.candidat1;
 public class Controleur {
     public static void main(String[] args) {
 
-        Buzzer Buzzer = new Buzzer();
+        //Buzzer Buzzer = new Buzzer();
         Deroulement.setCandidats();
         Ecran.creerEcran();
         RoueJeu.creerRoueJeu();

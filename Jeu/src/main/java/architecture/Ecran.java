@@ -10,6 +10,7 @@ public class Ecran {
     private final static char[][] tableauEcran = new char[4][14];
     private final static ArrayList<int[]> listeIndices = new ArrayList<>();
     private final static char[][] resultatTab = new char[4][14];
+    public static String phrase;
 
     public static void creerEcran(){
         for (int i = 0; i<4; i++){
@@ -51,7 +52,7 @@ public class Ecran {
     public static void choixDeLaPhrase() {
         //String phrase = "un feu /d'artifice";
         //String phrase = "une /bougie";
-        String phrase = "un bac à /sable";
+        phrase = "un bac à /sable";
 
         int col = 3;
         int ligne = 2;
