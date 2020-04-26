@@ -14,6 +14,7 @@ public class Deroulement {
 
     public static void setCandidatMain(Candidat candidat){
         candidatMain = candidat;
+        candidatMain.ajouterGain(500);
         System.out.println("Le candidat "+candidatMain.getNom()+" gagne la main !");
     }
 
@@ -34,7 +35,25 @@ public class Deroulement {
         Ecran.choixDeLaPhrase();
         Ecran.inscriptionCacheALEcran();
         Ecran.afficherEcran();
-        System.out.println("Le candidat "+candidatMain.getNom()+" tourne la roue...");
-        RoueJeu.lancerRoue(getCandidatMain());
+        while (Ecran.resteLettre()){
+            System.out.println("Le candidat "+candidatMain.getNom()+" tourne la roue...");
+            RoueJeu.lancerRoue(getCandidatMain());
+            Candidat.afficherLesSoldes();
+        }
+        System.out.println("Fin de la manche");
+
+    }
+
+    public static void nextCandidat() {
+        if (tabCandidats[0] == candidatMain){
+            candidatMain = tabCandidats[1];
+        }
+        else if (tabCandidats[1] == candidatMain){
+            candidatMain = tabCandidats[2];
+        }
+        else if (tabCandidats[2] == candidatMain){
+            candidatMain = tabCandidats[0];
+        }
+        System.out.println("Suivant...");
     }
 }

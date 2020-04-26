@@ -52,7 +52,7 @@ public class Ecran {
     public static void choixDeLaPhrase() {
         //String phrase = "Un feu /d'artifice";
         //String phrase = "Une /bougie";
-        String phrase = "Un bac à /sable";
+        String phrase = "un bac à /sable";
 
         int col = 3;
         int ligne = 2;
@@ -72,6 +72,15 @@ public class Ecran {
                     col++;
                 }
             }
+        }
+    }
+
+    public static boolean resteLettre() {
+        if(listeIndices.size() <= 0) {
+            return false;
+        }
+        else{
+            return true;
         }
     }
 
