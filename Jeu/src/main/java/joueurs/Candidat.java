@@ -4,6 +4,8 @@ import architecture.Ecran;
 import deroulement.Deroulement;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Random;
 
 import static deroulement.Deroulement.*;
@@ -74,16 +76,18 @@ public class Candidat {
 
     public void traiterGain(String gain) {
         try{
-
+            char c;
             int argent = Integer.parseInt(gain);
-            Random rand = new Random();
-            char c = (char)(rand.nextInt(26) + 97);
-            while (listeCharUtilise.contains(c)){
+            Random rand;
+
+            do{
                 rand = new Random();
                 c = (char)(rand.nextInt(26) + 97);
-            }
-            listeCharUtilise.add(c);
+            } while (listeCharUtilise.contains(c));
 
+            listeCharUtilise.add(c);
+            Collections.sort(listeCharUtilise);
+            System.out.println("Liste : " +listeCharUtilise);
             if(Ecran.afficherToutesLesLettres(c)){
                 ajouterGain(argent);
             }

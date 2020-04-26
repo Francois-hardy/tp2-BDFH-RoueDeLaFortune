@@ -49,8 +49,8 @@ public class Ecran {
     }
 
     public static void choixDeLaPhrase() {
-        //String phrase = "Un feu /d'artifice";
-        //String phrase = "Une /bougie";
+        //String phrase = "un feu /d'artifice";
+        //String phrase = "une /bougie";
         String phrase = "un bac à /sable";
 
         int col = 3;
@@ -75,7 +75,9 @@ public class Ecran {
     }
 
     public static boolean resteLettre() {
-        return listeIndices.size() > 0;
+
+
+        return listeIndices.size() >= 1;
     }
 
     public static void afficherUneLettre() {
@@ -98,6 +100,7 @@ public class Ecran {
                 }
             }
         }
+        //System.out.println("TAILLE : "+listeIndices.size());
     }
 
     public static void afficherToutesLesLettresUneParUne() {
@@ -118,15 +121,19 @@ public class Ecran {
     }
     public static boolean afficherToutesLesLettres(char lettre) {
         int taille = listeIndices.size();
+        int[] tableauCaseAAfficher;
         boolean trouve = false;
         System.out.println("Le candidat "+ Deroulement.getCandidatMain().getNom()+" propose la lettre "+lettre);
 
         for(int i = 0; i<taille;i++){
             taille = listeIndices.size();
-            int[] tableauCaseAAfficher = listeIndices.get(i);
+            tableauCaseAAfficher = listeIndices.get(i);
+            System.out.println("TAILLE : "+listeIndices.size());
             if(resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] == lettre){
                 tableauEcran[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] = resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]];
                 listeIndices.remove(i);
+                i--;
+                taille = listeIndices.size();
                 trouve = true;
             }
             else if(lettre == 'a'){
@@ -134,18 +141,24 @@ public class Ecran {
                 if(resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] == 'à' || resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] == 'â'){
                     tableauEcran[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] = resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]];
                     listeIndices.remove(i);
+                    i--;
+                    taille = listeIndices.size();
                     trouve = true;
                 }
+
             }
             else if(lettre == 'e'){
                 taille = listeIndices.size();
                 if(resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] == 'é' || resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] == 'è' || resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] == 'ê'){
                     tableauEcran[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] = resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]];
                     listeIndices.remove(i);
+                    i--;
+                    taille = listeIndices.size();
                     trouve = true;
                 }
             }
         }
+
         afficherEcran();
         return trouve;
     }
