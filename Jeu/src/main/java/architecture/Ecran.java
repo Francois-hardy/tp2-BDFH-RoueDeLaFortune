@@ -52,7 +52,7 @@ public class Ecran {
     public static void choixDeLaPhrase() {
         //String phrase = "un feu /d'artifice";
         //String phrase = "une /bougie";
-        phrase = "un bac à /sable";
+        phrase = "boites de /dépôts";
 
         int col = 3;
         int ligne = 2;
