@@ -153,6 +153,15 @@ public class Ecran {
                     trouve = true;
                 }
             }
+            else if(lettre == 'o'){
+                if(resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] == 'ô'){
+                    tableauEcran[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] = resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]];
+                    listeIndices.remove(i);
+                    i--;
+                    taille = listeIndices.size();
+                    trouve = true;
+                }
+            }
         }
 
         afficherEcran();

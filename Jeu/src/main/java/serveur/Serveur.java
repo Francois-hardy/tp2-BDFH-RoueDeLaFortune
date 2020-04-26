@@ -1,5 +1,6 @@
 package serveur;
 
+import architecture.Ecran;
 import com.corundumstudio.socketio.Configuration;
 import com.corundumstudio.socketio.SocketIOServer;
 
