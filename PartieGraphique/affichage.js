@@ -1,5 +1,5 @@
 Array.prototype.randomize = function () {
-    //fisher yates from http://codereview.stackexchange.com/a/12200/3163
+
     var i = this.length;
     if (i === 0) return false;
     while (--i) {
