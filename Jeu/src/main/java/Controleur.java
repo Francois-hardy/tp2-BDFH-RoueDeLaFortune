@@ -17,11 +17,14 @@ public class Controleur {
         ecran.inscriptionCacheALEcran();
         ecran.afficherEcran();
         ecran.afficherToutesLesLettres('a');
+        ecran.afficherToutesLesLettres('b');
+        ecran.afficherToutesLesLettres('s');
+        ecran.afficherToutesLesLettres('e');
         //ecran.afficherToutesLesLettresUneParUne();
 
-        RoueJeu roue = new RoueJeu();
+        //RoueJeu roue = new RoueJeu();
 
-        roue.lancerRoue(candidat1);
+        //roue.lancerRoue(candidat1);
 
 
 

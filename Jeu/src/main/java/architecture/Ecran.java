@@ -95,7 +95,9 @@ public class Ecran {
     }
     public void afficherToutesLesLettres(char lettre) {
         int taille = listeIndices.size();
-        for(int i = 0; i<taille-2;i++){
+        System.out.println("taille: "+taille);
+        for(int i = 0; i<taille;i++){
+            taille = listeIndices.size();
             int[] tableauCaseAAfficher = listeIndices.get(i);
             if(resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] == lettre){
                 tableauEcran[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] = resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]];
