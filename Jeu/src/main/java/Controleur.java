@@ -11,12 +11,12 @@ public class Controleur {
         Candidat candidat2 = new Candidat("Paul");
         Candidat candidat3 = new Candidat("Jacque");
         Buzzer Buzzer = new Buzzer();
-        Ecran ecran = new Ecran();
+        Ecran.allumerEcran();
         RoueJeu roue = new RoueJeu();
-        ecran.choixDeLaPhrase();
-        ecran.inscriptionCacheALEcran();
-        ecran.afficherEcran();
-        ecran.afficherToutesLesLettresUneParUne();
+        Ecran.choixDeLaPhrase();
+        Ecran.inscriptionCacheALEcran();
+        Ecran.afficherEcran();
+        Ecran.afficherToutesLesLettresUneParUne();
         Deroulement.setCandidatMain(candidat1);
 
         System.out.println("Manche 1");

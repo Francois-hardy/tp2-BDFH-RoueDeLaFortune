@@ -5,49 +5,49 @@ import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 public class Ecran {
-    private final char[][] tableauEcran = new char[4][14];
-    private final ArrayList<int[]> listeIndices = new ArrayList<>();
-    private final ArrayList<int[]> listeMemeLettre = new ArrayList<>();
-    private final char[][] resultatTab = new char[4][14];
+    private final static char[][] tableauEcran = new char[4][14];
+    private final static ArrayList<int[]> listeIndices = new ArrayList<>();
+    private final static ArrayList<int[]> listeMemeLettre = new ArrayList<>();
+    private final static char[][] resultatTab = new char[4][14];
 
-    public Ecran(){
+    public static void allumerEcran(){
         for (int i = 0; i<4; i++){
             for (int j = 0; j<14; j++){
-                this.tableauEcran[i][j] = ' ';
-                this.resultatTab[i][j] = ' ';
+                tableauEcran[i][j] = ' ';
+                resultatTab[i][j] = ' ';
             }
         }
-        this.tableauEcran[0][0] = '!';
-        this.tableauEcran[0][13] = '!';
-        this.tableauEcran[3][0] = '!';
-        this.tableauEcran[3][13] = '!';
+        tableauEcran[0][0] = '!';
+        tableauEcran[0][13] = '!';
+        tableauEcran[3][0] = '!';
+        tableauEcran[3][13] = '!';
 
-        this.resultatTab[0][0] = '!';
-        this.resultatTab[0][13] = '!';
-        this.resultatTab[3][0] = '!';
-        this.resultatTab[3][13] = '!';
+        resultatTab[0][0] = '!';
+        resultatTab[0][13] = '!';
+        resultatTab[3][0] = '!';
+        resultatTab[3][13] = '!';
     }
-    public void afficherEcran(){
+    public static void afficherEcran(){
         for (int i = 0; i<4; i++){
             for (int j = 0; j<14; j++){
-                System.out.print(this.tableauEcran[i][j]+" ");
-            }
-            System.out.println(" ");
-        }
-        System.out.println(" ");
-    }
-
-    private void afficherResultat(){
-        for (int i = 0; i<4; i++){
-            for (int j = 0; j<14; j++){
-                System.out.print(this.resultatTab[i][j]+" ");
+                System.out.print(tableauEcran[i][j]+" ");
             }
             System.out.println(" ");
         }
         System.out.println(" ");
     }
 
-    public void choixDeLaPhrase() {
+    private static void afficherResultat(){
+        for (int i = 0; i<4; i++){
+            for (int j = 0; j<14; j++){
+                System.out.print(resultatTab[i][j]+" ");
+            }
+            System.out.println(" ");
+        }
+        System.out.println(" ");
+    }
+
+    public static void choixDeLaPhrase() {
         //String phrase = "Un feu /d'artifice";
         //String phrase = "Une /bougie";
         String phrase = "Un bac à /sable";
@@ -73,7 +73,7 @@ public class Ecran {
         }
     }
 
-    public void afficherUneLettre() {
+    public static void afficherUneLettre() {
         int taille = listeIndices.size();
         int random = (int) (Math.random() * (taille));
         int[] tableauCaseAAfficher = listeIndices.get(random);
@@ -82,7 +82,7 @@ public class Ecran {
         afficherEcran();
     }
 
-    public void inscriptionCacheALEcran() {
+    public static void inscriptionCacheALEcran() {
         for (int i = 0; i<4; i++){
             for (int j = 0; j<14; j++){
                 if((tableauEcran[i][j] != ' ') && (tableauEcran[i][j] != '!') && (tableauEcran[i][j] != '\'' ) && (tableauEcran[i][j] != '?') && (tableauEcran[i][j] != '-')){
@@ -94,13 +94,13 @@ public class Ecran {
         }
     }
 
-    public void afficherToutesLesLettresUneParUne() {
+    public static void afficherToutesLesLettresUneParUne() {
         try{
             while (true){
                 afficherUneLettre();
                 TimeUnit.SECONDS.sleep(1);
                 if (Buzzer.getBoutonON() == 1) {
-                    this.afficherResultat();
+                    afficherResultat();
                     return;
                 }
 
@@ -110,7 +110,7 @@ public class Ecran {
         catch (Exception ignored){
         }
     }
-    public void afficherToutesLesLettres(char lettre) {
+    public static void afficherToutesLesLettres(char lettre) {
         int taille = listeIndices.size();
 
         for(int i = 0; i<taille;i++){
