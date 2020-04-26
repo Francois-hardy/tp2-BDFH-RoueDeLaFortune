@@ -2,29 +2,32 @@ import architecture.Buzzer;
 
 import architecture.Ecran;
 import architecture.RoueJeu;
+import deroulement.Deroulement;
 import joueurs.Candidat;
 
-import java.util.concurrent.TimeUnit;
-
 public class Controleur {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         Candidat candidat1 = new Candidat("Pierre");
         Candidat candidat2 = new Candidat("Paul");
         Candidat candidat3 = new Candidat("Jacque");
         Buzzer Buzzer = new Buzzer();
         Ecran ecran = new Ecran();
+        RoueJeu roue = new RoueJeu();
         ecran.choixDeLaPhrase();
         ecran.inscriptionCacheALEcran();
         ecran.afficherEcran();
-        ecran.afficherToutesLesLettres('a');
-        ecran.afficherToutesLesLettres('b');
-        ecran.afficherToutesLesLettres('s');
-        ecran.afficherToutesLesLettres('e');
-        //ecran.afficherToutesLesLettresUneParUne();
+        ecran.afficherToutesLesLettresUneParUne();
+        Deroulement.setCandidatMain(candidat1);
 
-        //RoueJeu roue = new RoueJeu();
+        System.out.println("Manche 1");
+        Deroulement.setRoue(roue);
+        Deroulement.lancerManche();
 
-        //roue.lancerRoue(candidat1);
+
+
+
+
+
 
 
 
