@@ -57,13 +57,16 @@ public class Deroulement {
 
     public static void nextCandidat() {
         if (tabCandidats[0] == candidatMain){
-            setCandidatMain(tabCandidats[1]);
+            candidatMain = tabCandidats[1];
+            System.out.println("C'est au tour de "+candidatMain.getNom());
         }
         else if (tabCandidats[1] == candidatMain){
-            setCandidatMain(tabCandidats[2]);
+            candidatMain = tabCandidats[2];
+            System.out.println("C'est au tour de "+candidatMain.getNom());
         }
         else if (tabCandidats[2] == candidatMain){
-            setCandidatMain(tabCandidats[0]);
+            candidatMain = tabCandidats[0];
+            System.out.println("C'est au tour de "+candidatMain.getNom());
         }
     }
 }
