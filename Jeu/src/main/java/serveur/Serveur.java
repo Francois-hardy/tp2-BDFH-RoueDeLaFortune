@@ -45,12 +45,12 @@ public class Serveur {
             Ecran.inscriptionCacheALEcran();
             Ecran.afficherEcran();
             //Ecran.afficherToutesLesLettresUneParUne();
-            socketIOClient.sendEvent("phrase", (Object) Ecran.resultatTab);
+            socketIOClient.sendEvent("phrase", (Object) Ecran.tableauEcran);
         });
 
         server.addEventListener("suivant", String.class, (socketIOClient, s, ackRequest) -> {
             Ecran.afficherUneLettre();
-            socketIOClient.sendEvent("phrase", (Object) Ecran.resultatTab);
+            socketIOClient.sendEvent("phrase", (Object) Ecran.tableauEcran);
         });
 
 
