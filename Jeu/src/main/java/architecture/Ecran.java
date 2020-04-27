@@ -2,6 +2,7 @@ package architecture;
 
 
 import deroulement.Deroulement;
+import serveur.Serveur;
 
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
@@ -37,6 +38,7 @@ public class Ecran {
             System.out.println(" ");
         }
         System.out.println(" ");
+        Serveur.afficherEcran(tableauEcran);
     }
 
     private static void afficherResultat(){

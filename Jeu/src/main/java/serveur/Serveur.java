@@ -71,4 +71,6 @@ public class Serveur {
         Serveur serveur = new Serveur(config);
     }
 
+    public static void afficherEcran(char[][] tableauEcran) {
+    }
 }
