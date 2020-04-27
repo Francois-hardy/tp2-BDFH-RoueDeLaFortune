@@ -2,31 +2,10 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
 <div class="container">
-	<div id="jeu">
-		<div id="interaction">
-			<div class="row justify-content-center">
-				<div id="affichage"></div>
-			</div>
-			<div class="row justify-content-center">
-				<div id="boutons">
-				        <button id="tourner">Tourner la roue</button>
-				        <button id="voyelle">Acheter une voyelle</button>
-				        <button id="nouveau">Nouvelle Partie</button>
-				        <div id="montant">Montant : <span id="money">0</span>
-				        	€
-				        </div>
-				    </div>
-			</div>
-		</div>
-		<div class="row justify-content-center">
-			<img id="fleche" src="fleche.png"/>
-		</div>
-		<div class="row justify-content-center">
-			<img id="wheel" src="roue.png" data-rotation="0" />
-		</div>
-	</div>
+	<table id="jeu">
+		<tbody></tbody>
+	</table>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/socket.io-client@2/dist/socket.io.js"></script>
 <script src="connexion.js"></script>
-<script src="affichage.js"></script>
