@@ -9,13 +9,18 @@ socket.on('connect', (data) => {
 
 socket.on('phrase', (data) => {
     drawGame(data);
-    socket.emit('suivant', 'suivant');
+    setTimeout(function(){
+        socket.emit('suivant', 'suivant');
+    }, 500);
 });
 
 function drawGame(data) {
+    var table = document.getElementById("jeu");
+    table.innerHTML = "";
+
     let phrase = data.join("");
     console.log(phrase);
-    var table = document.getElementById("jeu");
+
     var body = document.createElement("tbody");
     var tr1 = document.createElement("tr");
     var tr2 = document.createElement("tr");
@@ -90,6 +95,9 @@ function drawGame(data) {
     body.appendChild(tr3);
     body.appendChild(tr4);
     table.appendChild(body);
+
+    //wait in js
+
 }
 
 //socket.on('disconnect', function(){});
