@@ -8,3 +8,10 @@ td {
 #emptycell {
     background: white;
 }
+
+#whitecell {
+    background: lightgray !important;
+    font-weight: bold;
+    font-size: 400%;
+    text-align: center;
+}

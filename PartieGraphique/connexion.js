@@ -32,6 +32,7 @@ function drawGame(data) {
             if (phrase.charAt(i) !== "!" && phrase.charAt(i) !== " ") {
                 var td = document.createElement("td");
                 td.innerHTML = phrase.charAt(i);
+                td.setAttribute("id", "whitecell");
                 tr1.appendChild(td);
             }
             else {
@@ -47,6 +48,7 @@ function drawGame(data) {
             if (phrase.charAt(i) !== "!" && phrase.charAt(i) !== " ") {
                 var td = document.createElement("td");
                 td.innerHTML = phrase.charAt(i);
+                td.setAttribute("id", "whitecell");
                 tr2.appendChild(td);
             }
             else {
@@ -62,6 +64,7 @@ function drawGame(data) {
             if (phrase.charAt(i) !== "!" && phrase.charAt(i) !== " ") {
                 var td = document.createElement("td");
                 td.innerHTML = phrase.charAt(i);
+                td.setAttribute("id", "whitecell");
                 tr3.appendChild(td);
             }
             else {
@@ -77,6 +80,7 @@ function drawGame(data) {
             if (phrase.charAt(i) !== "!" && phrase.charAt(i) !== " ") {
                 var td = document.createElement("td");
                 td.innerHTML = phrase.charAt(i);
+                td.setAttribute("id", "whitecell");
                 tr4.appendChild(td);
             }
             else {
