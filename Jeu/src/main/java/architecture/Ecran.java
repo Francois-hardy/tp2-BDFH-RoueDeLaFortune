@@ -51,9 +51,8 @@ public class Ecran {
     }
 
     public static void choixDeLaPhrase() {
-        //String phrase = "un feu /d'artifice";
-        //String phrase = "une /bougie";
-        phrase = "connexion /client /serveur";
+        phrase = "UN FEU /D'ARTIFICE";
+        //phrase = "CONNEXION /CLIENT /SERVEUR";
 
         int col = 3;
         int ligne = 2;

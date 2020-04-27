@@ -7,9 +7,6 @@ import com.corundumstudio.socketio.SocketIOServer;
 import deroulement.Deroulement;
 
 import java.io.*;
-import java.util.ArrayList;
-
-import static deroulement.Deroulement.candidat1;
 
 
 /**
@@ -91,4 +88,7 @@ public class Serveur {
         Serveur serveur = new Serveur(config);
     }
 
+    public static void afficherEcran(char[][] tableauEcran) {
+
+    }
 }
