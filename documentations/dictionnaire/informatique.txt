@@ -1,0 +1,9 @@
+connexion /client /serveur
+protocole /tcp udp
+déconnexion /brutale
+un paquet /icmp
+un router /cisco
+mécanisme /de /translation
+une requete /http
+boites de /dépôts
+systèmes /et /réseaux

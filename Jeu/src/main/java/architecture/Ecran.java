@@ -52,7 +52,7 @@ public class Ecran {
     public static void choixDeLaPhrase() {
         //String phrase = "un feu /d'artifice";
         //String phrase = "une /bougie";
-        phrase = "un bac à /sable";
+        phrase = "connexion /client /serveur";
 
         int col = 3;
         int ligne = 2;
@@ -146,6 +146,24 @@ public class Ecran {
             }
             else if(lettre == 'e'){
                 if(resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] == 'é' || resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] == 'è' || resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] == 'ê'){
+                    tableauEcran[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] = resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]];
+                    listeIndices.remove(i);
+                    i--;
+                    taille = listeIndices.size();
+                    trouve = true;
+                }
+            }
+            else if(lettre == 'o'){
+                if(resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] == 'ô'){
+                    tableauEcran[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] = resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]];
+                    listeIndices.remove(i);
+                    i--;
+                    taille = listeIndices.size();
+                    trouve = true;
+                }
+            }
+            else if(lettre == 'c'){
+                if(resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] == 'ç'){
                     tableauEcran[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]] = resultatTab[tableauCaseAAfficher[0]][tableauCaseAAfficher[1]];
                     listeIndices.remove(i);
                     i--;
