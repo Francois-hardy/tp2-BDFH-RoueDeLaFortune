@@ -38,7 +38,6 @@ public class Ecran {
             System.out.println(" ");
         }
         System.out.println(" ");
-        Serveur.afficherEcran(tableauEcran);
     }
 
     private static void afficherResultat(){
@@ -111,8 +110,6 @@ public class Ecran {
             while (true){
                 afficherUneLettre();
                 TimeUnit.MILLISECONDS.sleep(100);
-
-
             }
 
         }

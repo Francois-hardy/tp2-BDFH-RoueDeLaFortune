@@ -4,11 +4,12 @@ var socket = io('127.0.0.1:10101');
 socket.on('event', function(data){});
 
 socket.on('connect', (data) => {
-    socket.emit('envoi_phrase', 'ok_phrase');
+    socket.emit('demarrage', 'demarrage');
 });
 
 socket.on('phrase', (data) => {
     drawGame(data);
+    socket.emit('suivant', 'suivant');
 });
 
 function drawGame(data) {

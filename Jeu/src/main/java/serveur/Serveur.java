@@ -32,18 +32,24 @@ public class Serveur {
         //Démarre un thread, le programme ne s'arrêtera pas tant que le serveur n'est pas terminé
         server.start();
 
-        //Buzzer Buzzer = new Buzzer();
-        Deroulement.setCandidats();
-        Ecran.creerEcran();
-        RoueJeu.creerRoueJeu();
-        Ecran.choixDeLaPhrase();
-        Ecran.inscriptionCacheALEcran();
-        Ecran.afficherEcran();
-        Ecran.afficherToutesLesLettresUneParUne();
-        Deroulement.setCandidatMain(candidat1);
-        Deroulement.lancerManche();
 
-        server.addEventListener("envoi_phrase", String.class, (socketIOClient, s, ackRequest) -> {
+        //Deroulement.setCandidatMain(candidat1);
+        //Deroulement.lancerManche();
+
+        server.addEventListener("demarrage", String.class, (socketIOClient, s, ackRequest) -> {
+            //Buzzer Buzzer = new Buzzer();
+            Deroulement.setCandidats();
+            Ecran.creerEcran();
+            RoueJeu.creerRoueJeu();
+            Ecran.choixDeLaPhrase();
+            Ecran.inscriptionCacheALEcran();
+            Ecran.afficherEcran();
+            //Ecran.afficherToutesLesLettresUneParUne();
+            socketIOClient.sendEvent("phrase", (Object) Ecran.resultatTab);
+        });
+
+        server.addEventListener("suivant", String.class, (socketIOClient, s, ackRequest) -> {
+            Ecran.afficherUneLettre();
             socketIOClient.sendEvent("phrase", (Object) Ecran.resultatTab);
         });
 
@@ -85,6 +91,4 @@ public class Serveur {
         Serveur serveur = new Serveur(config);
     }
 
-    public static void afficherEcran(char[][] tableauEcran) {
-    }
 }
