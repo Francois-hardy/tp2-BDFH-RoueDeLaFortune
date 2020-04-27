@@ -1,11 +1,15 @@
 package serveur;
 
 import architecture.Ecran;
+import architecture.RoueJeu;
 import com.corundumstudio.socketio.Configuration;
 import com.corundumstudio.socketio.SocketIOServer;
+import deroulement.Deroulement;
 
 import java.io.*;
 import java.util.ArrayList;
+
+import static deroulement.Deroulement.candidat1;
 
 
 /**
@@ -28,9 +32,19 @@ public class Serveur {
         //Démarre un thread, le programme ne s'arrêtera pas tant que le serveur n'est pas terminé
         server.start();
 
-        server.addEventListener("hello", String.class, (socketIOClient, s, ackRequest) -> {
-            System.out.println(s);
-            socketIOClient.sendEvent("re", "fran");
+        //Buzzer Buzzer = new Buzzer();
+        Deroulement.setCandidats();
+        Ecran.creerEcran();
+        RoueJeu.creerRoueJeu();
+        Ecran.choixDeLaPhrase();
+        Ecran.inscriptionCacheALEcran();
+        Ecran.afficherEcran();
+        Ecran.afficherToutesLesLettresUneParUne();
+        Deroulement.setCandidatMain(candidat1);
+        Deroulement.lancerManche();
+
+        server.addEventListener("envoi_phrase", String.class, (socketIOClient, s, ackRequest) -> {
+            socketIOClient.sendEvent("phrase", (Object) Ecran.resultatTab);
         });
 
 
