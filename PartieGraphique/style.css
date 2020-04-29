@@ -15,3 +15,7 @@ td {
     font-size: 400%;
     text-align: center;
 }
+
+#buzzer {
+    width: 20%;
+}
