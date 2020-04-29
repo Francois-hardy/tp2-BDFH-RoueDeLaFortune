@@ -36,30 +36,20 @@ public class Serveur {
 
         server.addEventListener("demarrage", String.class, (socketIOClient, s, ackRequest) -> {
             //Buzzer Buzzer = new Buzzer();
-            Deroulement.setCandidats();
-            Ecran.creerEcran();
-            RoueJeu.creerRoueJeu();
-            Ecran.choixDeLaPhrase();
-            Ecran.inscriptionCacheALEcran();
-            Ecran.afficherEcran();
+
             //Ecran.afficherToutesLesLettresUneParUne();
             while (Ecran.listeIndices.size() > 0){
                 socketIOClient.sendEvent("phrase", (Object) Ecran.tableauEcran);
-                TimeUnit.MILLISECONDS.sleep(500);
+                TimeUnit.MILLISECONDS.sleep(505);
             }
-
-
-
-
-
         });
 
-        server.addEventListener("suivant2", String.class, (socketIOClient, s, ackRequest) -> {
+        /*server.addEventListener("suivant2", String.class, (socketIOClient, s, ackRequest) -> {
             if(Ecran.listeIndices.size() > 0){
                 Ecran.afficherUneLettre();
                 socketIOClient.sendEvent("phrase", (Object) Ecran.tableauEcran);
             }
-        });
+        });*/
 
 
         //Ecouteur de connexion d'un client au serveur
@@ -83,7 +73,7 @@ public class Serveur {
      * Programme principale gérant les options du serveur
      * @param args Arguments
      */
-    public static void main(String [] args) {
+    public static void main(String [] args) throws InterruptedException {
         try {
             System.setOut(new PrintStream(System.out, true, "UTF-8"));
         } catch (UnsupportedEncodingException e) {
@@ -97,6 +87,20 @@ public class Serveur {
         config.setHttpCompression(false);
         config.setWebsocketCompression(false);
         Serveur serveur = new Serveur(config);
+
+        Deroulement.setCandidats();
+        Ecran.creerEcran();
+        RoueJeu.creerRoueJeu();
+        Ecran.choixDeLaPhrase();
+        Ecran.inscriptionCacheALEcran();
+        Ecran.afficherEcran();
+        TimeUnit.MILLISECONDS.sleep(5000);
+
+        while (Ecran.listeIndices.size() > 0){
+            Ecran.afficherUneLettre();
+            TimeUnit.MILLISECONDS.sleep(500);
+        }
+
     }
 
     public static void afficherEcran(char[][] tableauEcran) {

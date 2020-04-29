@@ -9,9 +9,6 @@ socket.on('connect', (data) => {
 
 socket.on('phrase', (data) => {
     drawGame(data);
-    setTimeout(function(){
-        socket.emit('suivant', 'suivant');
-    }, 500);
 });
 
 function drawGame(data) {
