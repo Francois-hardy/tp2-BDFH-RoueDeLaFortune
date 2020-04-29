@@ -40,7 +40,7 @@ public class Serveur {
 
         server.addEventListener("buzz", String.class, (socketIOClient, s, ackRequest) -> {
             //a remplir par francois le bg
-            System.out.println("Signal du buzzer reçu");
+            System.out.println(s);
         });
     }
 
