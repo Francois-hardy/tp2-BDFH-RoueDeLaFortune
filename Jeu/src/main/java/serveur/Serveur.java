@@ -17,6 +17,7 @@ import java.util.concurrent.TimeUnit;
 public class Serveur {
 
     static SocketIOServer server;
+    private static boolean buzze = false;
 
 
     /**
@@ -41,6 +42,7 @@ public class Serveur {
         server.addEventListener("buzz", String.class, (socketIOClient, s, ackRequest) -> {
             //a remplir par francois le bg
             System.out.println("Signal du buzzer reçu");
+            buzze = true;
         });
     }
 
@@ -72,11 +74,17 @@ public class Serveur {
         Ecran.choixDeLaPhrase();
         Ecran.inscriptionCacheALEcran();
         Ecran.afficherEcran();
-        TimeUnit.MILLISECONDS.sleep(5000);
+        TimeUnit.MILLISECONDS.sleep(3000);
 
         while (Ecran.listeIndices.size() > 0){
-            Ecran.afficherUneLettre();
-            TimeUnit.MILLISECONDS.sleep(500);
+            if(buzze){
+                Ecran.afficherResultat();
+            }
+            else {
+                Ecran.afficherUneLettre();
+                TimeUnit.MILLISECONDS.sleep(500);
+            }
+
         }
 
 

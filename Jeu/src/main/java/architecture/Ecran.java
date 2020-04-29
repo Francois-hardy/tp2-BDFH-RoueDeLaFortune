@@ -40,7 +40,7 @@ public class Ecran {
         System.out.println(" ");
     }
 
-    private static void afficherResultat(){
+    public static void afficherResultat(){
         for (int i = 0; i<4; i++){
             for (int j = 0; j<14; j++){
                 System.out.print(resultatTab[i][j]+" ");
