@@ -1,6 +1,7 @@
 package architecture;
 
 
+import com.sun.xml.internal.ws.util.StringUtils;
 import deroulement.Deroulement;
 import serveur.Serveur;
 
@@ -16,6 +17,7 @@ public class Ecran {
     public final static ArrayList<int[]> listeIndices = new ArrayList<>();
     public final static char[][] resultatTab = new char[4][14];
     public static String phrase;
+    public static String categorie;
 
     public static void creerEcran(){
         for (int i = 0; i<4; i++){
@@ -35,6 +37,7 @@ public class Ecran {
         resultatTab[3][13] = '!';
     }
     public static void afficherEcran(){
+        System.out.println("Catégorie: "+categorie);
         for (int i = 0; i<4; i++){
             for (int j = 0; j<14; j++){
                 System.out.print(tableauEcran[i][j]+" ");
@@ -87,9 +90,14 @@ public class Ecran {
         String[] liste = repertoire.list();
         assert liste != null;
         int random = (int) (Math.random() * (liste.length));
-        String randomTake = liste[random];
+        categorie = liste[random];
 
-        File file = new File(lien+"/"+randomTake);
+
+        File file = new File(lien+"/"+categorie);
+
+        categorie = categorie.replace(".txt","");
+        categorie = StringUtils.capitalize(categorie);
+
         BufferedReader br = new BufferedReader(new FileReader(file));
         String line;
         ArrayList<String> tabPhrase = new ArrayList<>();
