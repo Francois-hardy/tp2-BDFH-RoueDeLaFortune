@@ -99,12 +99,12 @@ public class Ecran {
         }
         br.close();
         random = (int) (Math.random() * (tabPhrase.size()));
+
         return tabPhrase.get(random);
 
     }
 
     public static boolean resteLettre() {
-
 
         return listeIndices.size() >= 1;
     }
@@ -132,17 +132,7 @@ public class Ecran {
         //System.out.println("TAILLE : "+listeIndices.size());
     }
 
-    public static void afficherToutesLesLettresUneParUne() {
-        try{
-            while (true){
-                afficherUneLettre();
-                TimeUnit.MILLISECONDS.sleep(100);
-            }
 
-        }
-        catch (Exception ignored){
-        }
-    }
     public static boolean afficherToutesLesLettres(char lettre) {
         int taille = listeIndices.size();
         int[] tableauCaseAAfficher;
@@ -203,4 +193,9 @@ public class Ecran {
         return trouve;
     }
 
+    public static String phraseReponse() {
+        String phraseReponse = phrase;
+        phraseReponse = phraseReponse.replace("/", "");
+        return phraseReponse;
+    }
 }

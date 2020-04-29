@@ -93,7 +93,7 @@ public class Serveur {
             if(buzze){
                 if(valide) {
                     try {
-                        if (reponseBuzze.equals("un feu d'artifice")) {
+                        if (reponseBuzze.equals(Ecran.phraseReponse())) {
                             while (Ecran.listeIndices.size() > 0) {
                                 Ecran.afficherUneLettre();
                             }
