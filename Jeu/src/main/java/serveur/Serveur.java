@@ -37,6 +37,11 @@ public class Serveur {
             }
             socketIOClient.sendEvent("phrase", (Object) Ecran.tableauEcran);
         });
+
+        server.addEventListener("buzz", String.class, (socketIOClient, s, ackRequest) -> {
+            //a remplir par francois le bg
+            System.out.println("Signal du buzzer reçu");
+        });
     }
 
     //Définition de l'encodage et du modèle d'affichage des prints

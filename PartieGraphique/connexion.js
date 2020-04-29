@@ -1,6 +1,7 @@
 var phrase;
 
 var socket = io('127.0.0.1:10101');
+
 socket.on('event', function(data){});
 
 socket.on('connect', (data) => {
@@ -99,6 +100,10 @@ function drawGame(data) {
 
     //wait in js
 
+}
+
+function buzzer() {
+    socket.emit('buzz', 'buzz');
 }
 
 //socket.on('disconnect', function(){});
