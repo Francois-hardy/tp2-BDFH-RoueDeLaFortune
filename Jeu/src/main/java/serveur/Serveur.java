@@ -7,6 +7,7 @@ import com.corundumstudio.socketio.SocketIOServer;
 import deroulement.Deroulement;
 
 import java.io.*;
+import java.util.concurrent.TimeUnit;
 
 
 /**
@@ -42,14 +43,18 @@ public class Serveur {
             Ecran.inscriptionCacheALEcran();
             Ecran.afficherEcran();
             //Ecran.afficherToutesLesLettresUneParUne();
-            socketIOClient.sendEvent("phrase", (Object) Ecran.tableauEcran);
+            while (Ecran.listeIndices.size() > 0){
+                socketIOClient.sendEvent("phrase", (Object) Ecran.tableauEcran);
+                TimeUnit.MILLISECONDS.sleep(500);
+            }
+
 
 
 
 
         });
 
-        server.addEventListener("suivant", String.class, (socketIOClient, s, ackRequest) -> {
+        server.addEventListener("suivant2", String.class, (socketIOClient, s, ackRequest) -> {
             if(Ecran.listeIndices.size() > 0){
                 Ecran.afficherUneLettre();
                 socketIOClient.sendEvent("phrase", (Object) Ecran.tableauEcran);
