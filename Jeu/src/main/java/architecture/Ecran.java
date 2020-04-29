@@ -1,7 +1,7 @@
 package architecture;
 
 
-import com.sun.xml.ws.util.StringUtils;
+import com.sun.xml.internal.ws.util.StringUtils;
 import deroulement.Deroulement;
 
 import java.io.BufferedReader;
