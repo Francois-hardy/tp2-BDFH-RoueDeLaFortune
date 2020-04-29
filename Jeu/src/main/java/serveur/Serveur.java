@@ -18,6 +18,7 @@ public class Serveur {
 
     static SocketIOServer server;
     private static boolean buzze = false;
+    private static String reponseBuzze = "null";
 
 
     /**
@@ -42,11 +43,13 @@ public class Serveur {
         server.addEventListener("action_buzz", String.class, (socketIOClient, s, ackRequest) -> {
             //a remplir par francois le bg
             System.out.println("j'ai buzzer");
+            buzze = true;
         });
 
         server.addEventListener("envoie_phrase_buzz", String.class, (socketIOClient, s, ackRequest) -> {
             //a remplir par francois le bg
             System.out.println(s);
+            reponseBuzze = s;
         });
     }
 
@@ -82,7 +85,9 @@ public class Serveur {
 
         while (Ecran.listeIndices.size() > 0){
             if(buzze){
-                Ecran.afficherResultat();
+                while (!reponseBuzze.equals("test")){
+                }
+                buzze = false;
             }
             else {
                 Ecran.afficherUneLettre();
