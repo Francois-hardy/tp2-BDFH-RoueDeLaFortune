@@ -40,7 +40,7 @@ public class Serveur {
 
         server.addEventListener("buzz", String.class, (socketIOClient, s, ackRequest) -> {
             //a remplir par francois le bg
-            System.out.println(s);
+            System.out.println("ca envoie dans le vide ts content sale chien je suis pas ta pute parle mieux sinon je bosse plus");
         });
     }
 
