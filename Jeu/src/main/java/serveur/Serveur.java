@@ -30,41 +30,14 @@ public class Serveur {
         //Démarre un thread, le programme ne s'arrêtera pas tant que le serveur n'est pas terminé
         server.start();
 
-
-        //Deroulement.setCandidatMain(candidat1);
-        //Deroulement.lancerManche();
-
         server.addEventListener("demarrage", String.class, (socketIOClient, s, ackRequest) -> {
-            //Buzzer Buzzer = new Buzzer();
-
-            //Ecran.afficherToutesLesLettresUneParUne();
             while (Ecran.listeIndices.size() > 0){
                 socketIOClient.sendEvent("phrase", (Object) Ecran.tableauEcran);
                 TimeUnit.MILLISECONDS.sleep(505);
             }
+            socketIOClient.sendEvent("phrase", (Object) Ecran.tableauEcran);
         });
-
-        /*server.addEventListener("suivant2", String.class, (socketIOClient, s, ackRequest) -> {
-            if(Ecran.listeIndices.size() > 0){
-                Ecran.afficherUneLettre();
-                socketIOClient.sendEvent("phrase", (Object) Ecran.tableauEcran);
-            }
-        });*/
-
-
-        //Ecouteur de connexion d'un client au serveur
-
-        /*server.addConnectListener(client -> {
-        });*/
-
-
-        //Ecouteur de la deconnexion d'un client du serveur
-
-        /*server.addDisconnectListener(client -> {
-        });*/
-
     }
-
 
     //Définition de l'encodage et du modèle d'affichage des prints
     //Configuration des paramètres du serveur et démarrage
@@ -101,9 +74,6 @@ public class Serveur {
             TimeUnit.MILLISECONDS.sleep(500);
         }
 
-    }
-
-    public static void afficherEcran(char[][] tableauEcran) {
 
     }
 }
