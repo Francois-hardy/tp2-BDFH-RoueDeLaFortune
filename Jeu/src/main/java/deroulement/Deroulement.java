@@ -4,6 +4,8 @@ import architecture.Ecran;
 import architecture.RoueJeu;
 import joueurs.Candidat;
 
+import java.io.IOException;
+
 public class Deroulement {
     public static Candidat candidatMain;
     public static Candidat[] tabCandidats;
@@ -29,7 +31,7 @@ public class Deroulement {
         return candidatMain;
     }
 
-    public static void lancerManche() {
+    public static void lancerManche() throws IOException {
         if(mancheActuelle <4){
             mancheActuelle++;
             System.out.println("Manche "+ mancheActuelle);

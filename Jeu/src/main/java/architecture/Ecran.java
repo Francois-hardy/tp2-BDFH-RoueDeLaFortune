@@ -4,6 +4,10 @@ package architecture;
 import deroulement.Deroulement;
 import serveur.Serveur;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
@@ -50,9 +54,11 @@ public class Ecran {
         System.out.println(" ");
     }
 
-    public static void choixDeLaPhrase() {
-        phrase = "UN FEU /D'ARTIFICE";
+    public static void choixDeLaPhrase() throws IOException {
+        //phrase = selectionnePhrase();
+        //phrase = "UN FEU /D'ARTIFICE";
         //phrase = "CONNEXION /CLIENT /SERVEUR";
+        phrase = selectionnePhrase();
 
         int col = 3;
         int ligne = 2;
@@ -73,6 +79,28 @@ public class Ecran {
                 }
             }
         }
+    }
+
+    private static String selectionnePhrase() throws IOException {
+        String lien = "Jeu/src/main/documentations/dictionnaire";
+        File repertoire = new File(lien);
+        String[] liste = repertoire.list();
+        assert liste != null;
+        int random = (int) (Math.random() * (liste.length));
+        String randomTake = liste[random];
+
+        File file = new File(lien+"/"+randomTake);
+        BufferedReader br = new BufferedReader(new FileReader(file));
+        String line;
+        ArrayList<String> tabPhrase = new ArrayList<>();
+
+        while ((line = br.readLine()) != null) {
+            tabPhrase.add(line);
+        }
+        br.close();
+        random = (int) (Math.random() * (tabPhrase.size()));
+        return tabPhrase.get(random);
+
     }
 
     public static boolean resteLettre() {

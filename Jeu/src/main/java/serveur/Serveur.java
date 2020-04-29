@@ -66,7 +66,7 @@ public class Serveur {
      * Programme principale gérant les options du serveur
      * @param args Arguments
      */
-    public static void main(String [] args) throws InterruptedException {
+    public static void main(String [] args) throws InterruptedException, IOException {
         try {
             System.setOut(new PrintStream(System.out, true, "UTF-8"));
         } catch (UnsupportedEncodingException e) {
