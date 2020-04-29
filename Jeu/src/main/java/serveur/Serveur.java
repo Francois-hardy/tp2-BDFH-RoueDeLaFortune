@@ -18,7 +18,8 @@ public class Serveur {
 
     static SocketIOServer server;
     private static boolean buzze = false;
-    private static String reponseBuzze = "null";
+    private static String reponseBuzze = "mauvais";
+    private static boolean valide = false;
 
 
     /**
@@ -42,14 +43,19 @@ public class Serveur {
 
         server.addEventListener("action_buzz", String.class, (socketIOClient, s, ackRequest) -> {
             //a remplir par francois le bg
-            System.out.println("j'ai buzzer");
+
             buzze = true;
         });
 
         server.addEventListener("envoie_phrase_buzz", String.class, (socketIOClient, s, ackRequest) -> {
             //a remplir par francois le bg
-            System.out.println(s);
+
+            if (s == "null"){
+                s = "mauvais";
+            }
             reponseBuzze = s;
+            valide = true;
+
         });
     }
 
@@ -85,17 +91,36 @@ public class Serveur {
 
         while (Ecran.listeIndices.size() > 0){
             if(buzze){
-                while (!reponseBuzze.equals("test")){
+                if(valide) {
+                    try {
+                        if (reponseBuzze.equals("un feu d'artifice")) {
+                            while (Ecran.listeIndices.size() > 0) {
+                                Ecran.afficherUneLettre();
+                            }
+                            System.out.println("reponse");
+                            valide = false;
+                            buzze = false;
+                            reponseBuzze = " ";
+
+                        } else if (!reponseBuzze.equals("mauvais")) {
+                            valide = false;
+                            buzze = false;
+                            reponseBuzze = " ";
+                            System.out.println("perdu");
+                        }
+                    }
+                    catch (Exception ignored){
+                        valide = false;
+                        buzze = false;
+                        reponseBuzze = " ";
+                        System.out.println("perdu");
+                    }
                 }
-                buzze = false;
             }
             else {
                 Ecran.afficherUneLettre();
-                TimeUnit.MILLISECONDS.sleep(500);
+                TimeUnit.MILLISECONDS.sleep(1000);
             }
-
         }
-
-
     }
 }
