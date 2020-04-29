@@ -36,7 +36,7 @@ public class Serveur {
         server.addEventListener("demarrage", String.class, (socketIOClient, s, ackRequest) -> {
             while (Ecran.listeIndices.size() > 0){
                 socketIOClient.sendEvent("phrase", (Object) Ecran.tableauEcran);
-                TimeUnit.MILLISECONDS.sleep(505);
+                TimeUnit.MILLISECONDS.sleep(500);
             }
             socketIOClient.sendEvent("phrase", (Object) Ecran.tableauEcran);
         });
@@ -49,10 +49,15 @@ public class Serveur {
 
         server.addEventListener("envoie_phrase_buzz", String.class, (socketIOClient, s, ackRequest) -> {
             //a remplir par francois le bg
-
-            if (s == "null"){
+            try {
+                if (s.equals("null")){
+                    s = "mauvais";
+                }
+            }
+            catch (Exception ignored){
                 s = "mauvais";
             }
+
             reponseBuzze = s;
             valide = true;
 
@@ -81,48 +86,53 @@ public class Serveur {
         config.setWebsocketCompression(false);
         Serveur serveur = new Serveur(config);
 
-        Deroulement.setCandidats();
-        Ecran.creerEcran();
-        RoueJeu.creerRoueJeu();
-        Ecran.choixDeLaPhrase();
-        Ecran.inscriptionCacheALEcran();
-        Ecran.afficherEcran();
-        TimeUnit.MILLISECONDS.sleep(3000);
 
-        while (Ecran.listeIndices.size() > 0){
-            if(buzze){
-                System.out.println("BUZZ");
-                if(valide) {
-                    System.out.println("VALIDE");
-                    try {
-                        if (reponseBuzze.equalsIgnoreCase(Ecran.phraseReponse())) {
-                            System.out.println("Bonne réponse");
-                            while (Ecran.listeIndices.size() > 0) {
-                                Ecran.afficherUneLettre();
+        while (true){
+            Deroulement.setCandidats();
+            Ecran.creerEcran();
+            RoueJeu.creerRoueJeu();
+            Ecran.choixDeLaPhrase();
+            Ecran.inscriptionCacheALEcran();
+            Ecran.afficherEcran();
+            TimeUnit.MILLISECONDS.sleep(3000);
+
+            while (Ecran.listeIndices.size() > 0){
+                if(buzze){
+                    System.out.println("BUZZ");
+                    if(valide) {
+                        System.out.println("VALIDE");
+                        try {
+                            if (reponseBuzze.equalsIgnoreCase(Ecran.phraseReponse())) {
+                                System.out.println("Bonne réponse");
+                                while (Ecran.listeIndices.size() > 0) {
+                                    Ecran.afficherUneLettre();
+                                }
+                                valide = false;
+                                buzze = false;
+                                reponseBuzze = " ";
+
+                            } else  {
+                                valide = false;
+                                buzze = false;
+                                reponseBuzze = " ";
+                                System.out.println("Mauvaise réponse");
                             }
+                        }
+                        catch (Exception ignored){
                             valide = false;
                             buzze = false;
                             reponseBuzze = " ";
-
-                        } else if (!reponseBuzze.equals("mauvais")) {
-                            valide = false;
-                            buzze = false;
-                            reponseBuzze = " ";
-                            System.out.println("Mauvaise réponse");
+                            System.out.println("perdu");
                         }
                     }
-                    catch (Exception ignored){
-                        valide = false;
-                        buzze = false;
-                        reponseBuzze = " ";
-                        System.out.println("perdu");
-                    }
+                }
+                else {
+                    Ecran.afficherUneLettre();
+                    TimeUnit.MILLISECONDS.sleep(1000);
                 }
             }
-            else {
-                Ecran.afficherUneLettre();
-                TimeUnit.MILLISECONDS.sleep(1000);
-            }
+            TimeUnit.MILLISECONDS.sleep(3000);
         }
+
     }
 }

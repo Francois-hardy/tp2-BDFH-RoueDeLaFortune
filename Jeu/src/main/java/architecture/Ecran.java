@@ -99,8 +99,9 @@ public class Ecran {
         }
         br.close();
         random = (int) (Math.random() * (tabPhrase.size()));
-
-        return tabPhrase.get(random);
+        phrase = tabPhrase.get(random);
+        System.out.println(phrase);
+        return phrase;
 
     }
 
