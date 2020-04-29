@@ -43,7 +43,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <mainClass>Controleur
+                    <mainClass>serveur.Serveur
                     </mainClass>  <!-- à changer : classe avec point d'entrée pour votre projet -->
                     <!-- argument de la commande java (en plus du nom de la classe et du classpath -->
 
