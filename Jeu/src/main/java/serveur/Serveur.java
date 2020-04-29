@@ -39,10 +39,14 @@ public class Serveur {
             socketIOClient.sendEvent("phrase", (Object) Ecran.tableauEcran);
         });
 
-        server.addEventListener("buzz", String.class, (socketIOClient, s, ackRequest) -> {
+        server.addEventListener("action_buzz", String.class, (socketIOClient, s, ackRequest) -> {
             //a remplir par francois le bg
-            System.out.println("ca envoie dans le vide ts content sale chien je suis pas ta pute parle mieux sinon je bosse plus");
-            buzze = true;
+            System.out.println("j'ai buzzer");
+        });
+
+        server.addEventListener("envoie_phrase_buzz", String.class, (socketIOClient, s, ackRequest) -> {
+            //a remplir par francois le bg
+            System.out.println(s);
         });
     }
 
