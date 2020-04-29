@@ -6,7 +6,7 @@ import deroulement.Deroulement;
 
 import static deroulement.Deroulement.candidat1;
 
-public class Controleur {
+public class Controleur {/*
     public static void main(String[] args) {
 
         //Buzzer Buzzer = new Buzzer();
@@ -19,5 +19,5 @@ public class Controleur {
         Ecran.afficherToutesLesLettresUneParUne();
         Deroulement.setCandidatMain(candidat1);
         Deroulement.lancerManche();
-    }
+    }*/
 }

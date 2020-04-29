@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Ecran {
     public final static char[][] tableauEcran = new char[4][14];
-    private final static ArrayList<int[]> listeIndices = new ArrayList<>();
+    public final static ArrayList<int[]> listeIndices = new ArrayList<>();
     public final static char[][] resultatTab = new char[4][14];
     public static String phrase;
 
