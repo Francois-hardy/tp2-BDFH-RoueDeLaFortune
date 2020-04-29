@@ -91,13 +91,15 @@ public class Serveur {
 
         while (Ecran.listeIndices.size() > 0){
             if(buzze){
+                System.out.println("BUZZ");
                 if(valide) {
+                    System.out.println("VALIDE");
                     try {
-                        if (reponseBuzze.equals(Ecran.phraseReponse())) {
+                        if (reponseBuzze.equalsIgnoreCase(Ecran.phraseReponse())) {
+                            System.out.println("Bonne réponse");
                             while (Ecran.listeIndices.size() > 0) {
                                 Ecran.afficherUneLettre();
                             }
-                            System.out.println("reponse");
                             valide = false;
                             buzze = false;
                             reponseBuzze = " ";
@@ -106,7 +108,7 @@ public class Serveur {
                             valide = false;
                             buzze = false;
                             reponseBuzze = " ";
-                            System.out.println("perdu");
+                            System.out.println("Mauvaise réponse");
                         }
                     }
                     catch (Exception ignored){
