@@ -1,19 +1,20 @@
-barack /obama
-donald /trump
-emmanuel /macron
-françois /hollande
-nicolas /sarkozy
-jacques /chirac
-françois /mitterrand
-valéry /giscard /d'estaing
-charles de /gaulle
-rené coty
-vincent /auriol
-george /walker /bush
-bill /clinton
-george /herbert /walker bush
-ronald /reagan
-jimmy /carter
-gerald /ford
-richard /nixon
-john /fitzgerald / kennedy
+BARACK /OBAMA
+DONALD /TRUMP
+EMMANUEL /MACRON
+FRANÇOIS /HOLLANDE
+NICOLAS /SARKOZY
+JACQUES /CHIRAC
+FRANÇOIS /MITTERRAND
+VALERY /GISCARD /D'ESTAING
+CHARLES DE /GAULLE
+RENE COTY
+VINCENT /AURIOL
+GEORGE /WALKER /BUSH
+BILL /CLINTON
+GEORGE /HERBERT /WALKER BUSH
+RONALD /REAGAN
+JIMMY /CARTER
+GERALD /FORD
+RICHARD /NIXON
+JOHN /FITZGERALD / KENNEDY
+
