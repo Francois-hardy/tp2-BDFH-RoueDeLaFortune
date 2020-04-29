@@ -103,8 +103,8 @@ function drawGame(data) {
 }
 
 function buzzer() {
-    var phrase_tentative = window.prompt("Entrer la phrase :");
-    socket.emit('buzz', phrase_tentative);
+    //var phrase_tentative = window.prompt("Entrer la phrase :");
+    socket.emit('buzz', 'buzz');
 }
 
 //socket.on('disconnect', function(){});
