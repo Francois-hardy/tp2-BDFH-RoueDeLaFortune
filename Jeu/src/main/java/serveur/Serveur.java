@@ -47,6 +47,10 @@ public class Serveur {
             buzze = true;
         });
 
+        server.addEventListener("retourNombre", String.class, (socketIOClient, s, ackRequest) -> {
+            System.out.println(s);
+        });
+
         server.addEventListener("demande_categorie", String.class, (socketIOClient, s, ackRequest) ->
                 socketIOClient.sendEvent("categorie", Ecran.categorie));
 

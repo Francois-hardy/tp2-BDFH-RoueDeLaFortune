@@ -5,7 +5,14 @@
 	<table id="jeu">
 		<tbody></tbody>
 	</table>
-	<input id="buzzer" type="image" onclick="buzzer()" src="buzzer.jpg" />
+	<div class="row">
+		<div class="col">
+			<input id="buzzer" type="image" onclick="buzzer()" src="buzzer.jpg" />
+		</div>
+		<div class="col">
+			<canvas id="canvas" width="1188" height="937"></canvas>
+		</div>
+	</div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/socket.io-client@2/dist/socket.io.js"></script>

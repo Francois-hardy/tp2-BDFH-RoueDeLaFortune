@@ -183,6 +183,16 @@
             <artifactId>netty-socketio</artifactId>
             <version>1.7.18</version>
         </dependency>
+        <dependency>
+            <groupId>BDFH</groupId>
+            <artifactId>LaRoueDeLaFortune</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.liferay</groupId>
+            <artifactId>com.sun.xml.ws</artifactId>
+            <version>2.1.7.LIFERAY-PATCHED-1</version>
+        </dependency>
 
     </dependencies>
 
