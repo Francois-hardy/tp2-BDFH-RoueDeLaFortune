@@ -83,31 +83,12 @@ public class Ecran {
         }
     }
 
-    private static String selectionnePhrase() throws IOException {
-        String lien = "Jeu/src/main/documentations/dictionnaire";
-        File repertoire = new File(lien);
-        String[] liste = repertoire.list();
-        int random = (int) (Math.random() * (Objects.requireNonNull(liste).length));
-        categorie = liste[random];
+    private static void selectionnePhrase() {
 
-
-        File file = new File(lien+"/"+categorie);
-
-        categorie = categorie.replace(".txt","");
-        categorie = StringUtils.capitalize(categorie);
-
-        BufferedReader br = new BufferedReader(new FileReader(file));
-        String line;
-        ArrayList<String> tabPhrase = new ArrayList<>();
-
-        while ((line = br.readLine()) != null) {
-            tabPhrase.add(line);
-        }
-        br.close();
-        random = (int) (Math.random() * (tabPhrase.size()));
-        phrase = tabPhrase.get(random);
-        System.out.println(phrase);
-        return phrase;
+        String[] celebrites = {"ANGELINA /JOLIE","GEORGE /CLOONEY"};
+        String[] informatique = {"CONNEXION /CLIENT /SERVEUR","PROTOCOLE /TCP UDP"};
+        String[] objets = {"UN BAC A /SABLE","UNE PAIRE /DE /LUNETTES"};
+        String[] presidents = {"BARACK /OBAMA","DONALD /TRUMP"};
 
     }
 
