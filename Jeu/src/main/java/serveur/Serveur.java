@@ -85,7 +85,7 @@ public class Serveur {
         }
 
         Configuration config = new Configuration();
-        config.setHostname("polymnie.unice.fr");
+        config.setHostname("127.0.0.1");
         config.setPort(10101);
 
         config.setHttpCompression(false);

@@ -4,6 +4,7 @@ import deroulement.Deroulement;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Ecran {
     public final static char[][] tableauEcran = new char[4][14];
@@ -79,18 +80,21 @@ public class Ecran {
 
     private static String selectionnePhrase() {
         
-        String[] celebrites = {"ANGELINA /JOLIE","GEORGE /CLOONEY"};
-        String[] informatique = {"CONNEXION /CLIENT /SERVEUR","PROTOCOLE /TCP UDP"};
-        String[] objets = {"UN BAC A /SABLE","UNE PAIRE /DE /LUNETTES"};
-        String[] presidents = {"BARACK /OBAMA","DONALD /TRUMP"};
+        String[] celebrites = {"Célébrités","ANGELINA /JOLIE","GEORGE /CLOONEY"};
+        String[] informatique = {"Informatique","CONNEXION /CLIENT /SERVEUR","PROTOCOLE /TCP UDP"};
+        String[] objets = {"Objets","UN BAC A /SABLE","UNE PAIRE /DE /LUNETTES"};
+        String[] presidents = {"Présidents","BARACK /OBAMA","DONALD /TRUMP"};
         
-        String tmpPhrase = null;
+        String tmpPhrase;
         String[][] tabCategorie = {celebrites,informatique,objets,presidents};
-        int random = (int) (Math.random() * (tabCategorie.length));
+        int randomCategorie = (int) (Math.random() * (tabCategorie.length));
+        int randomPhrase = (int) (1+Math.random() * (tabCategorie[randomCategorie].length));
+        tmpPhrase = tabCategorie[randomCategorie][randomPhrase];
 
-        
+        categorie = tabCategorie[randomCategorie][0];
 
-        return "ANGELINA /JOLIE";
+
+        return tmpPhrase;
 
     }
 
