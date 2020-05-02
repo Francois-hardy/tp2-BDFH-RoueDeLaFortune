@@ -1,6 +1,6 @@
 var phrase;
 
-var socket = io('127.0.0.1:10101');
+var socket = io('seine.unice.fr:10101');
 
 socket.on('event', function(data){});
 
