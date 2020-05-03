@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 
 
 /**
- * @author Grégory BARTOLO
+ * @author Grégory BARTOLO, François HARDY
  */
 
 public class Serveur {
@@ -42,7 +42,6 @@ public class Serveur {
         });
 
         server.addEventListener("action_buzz", String.class, (socketIOClient, s, ackRequest) -> {
-            //a remplir par francois le bg
 
             buzze = true;
         });
