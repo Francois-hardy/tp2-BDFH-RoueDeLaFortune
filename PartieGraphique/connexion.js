@@ -14,6 +14,16 @@ socket.on('nombre_en_attente', (data) => {
     if (data === 3) {
         var affichageNbrPersonne = document.getElementById("nombrePersonne");
         affichageNbrPersonne.remove();
+
+        var buzzerInstance = document.createElement("input");
+        buzzerInstance.setAttribute("id", "buzzer");
+        buzzerInstance.setAttribute("type", "image");
+        buzzerInstance.setAttribute("onclick", "buzzer()");
+        buzzerInstance.setAttribute("src", "buzzer.jpg");
+
+        var buzzerEmplacement = document.getElementById("buzzerEmplacement");
+        buzzerEmplacement.appendChild(buzzerInstance);
+
     }
 });
 
