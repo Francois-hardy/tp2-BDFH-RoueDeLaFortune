@@ -14,3 +14,4 @@
 - Ouvrir un terminal et se placer à la racine du projet
 - `cd Jeu`
 - `mvn javadoc:javadoc`
+- Racine > Jeu > target > site > apidocs > index.html
