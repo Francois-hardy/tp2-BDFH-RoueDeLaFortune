@@ -52,3 +52,10 @@ td {
 #canvas {
     width: 180%;
 }
+
+#nombrePersonne {
+    position:fixed;
+    top: 45%;
+    left: 45%;
+    font: bold 500% "Marker Felt", fantasy;
+}

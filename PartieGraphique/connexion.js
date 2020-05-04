@@ -10,7 +10,7 @@ socket.on('connect', (data) => {
 
 socket.on('nombre_en_attente', (data) => {
     var nbrPersonne = document.getElementById("nombreActuelPersonne");
-    nbrPersonne.innerHTML = data;
+    nbrPersonne.innerHTML = data + " / 3";
     if (data === 3) {
         var affichageNbrPersonne = document.getElementById("nombrePersonne");
         affichageNbrPersonne.remove();
