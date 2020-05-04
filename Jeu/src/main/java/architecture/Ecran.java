@@ -1,11 +1,11 @@
 package architecture;
 
 import deroulement.Deroulement;
-
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 
+/**
+ * Classe static permettant de créer, gérer, afficher l'écran
+ */
 public class Ecran {
     public final static char[][] tableauEcran = new char[4][14];
     public final static ArrayList<int[]> listeIndices = new ArrayList<>();
@@ -13,6 +13,9 @@ public class Ecran {
     public static String phrase;
     public static String categorie;
 
+    /**
+     * Permet de créer l'écran
+     */
     public static void creerEcran(){
         for (int i = 0; i<4; i++){
             for (int j = 0; j<14; j++){
@@ -30,6 +33,10 @@ public class Ecran {
         resultatTab[3][0] = '!';
         resultatTab[3][13] = '!';
     }
+
+    /**
+     * Affiche le contenu de l'acran
+     */
     public static void afficherEcran(){
         System.out.println("Catégorie: "+categorie);
         for (int i = 0; i<4; i++){
@@ -41,6 +48,9 @@ public class Ecran {
         System.out.println(" ");
     }
 
+    /**
+     * Affcihe le résultat (réponse)
+     */
     public static void afficherResultat(){
         for (int i = 0; i<4; i++){
             for (int j = 0; j<14; j++){
@@ -51,6 +61,9 @@ public class Ecran {
         System.out.println(" ");
     }
 
+    /**
+     * Permet de faire un traitement de la pharse pour l'afficher à l'écran
+     */
     public static void choixDeLaPhrase()  {
         //phrase = selectionnePhrase();
         //phrase = "UN FEU /D'ARTIFICE";
@@ -78,6 +91,10 @@ public class Ecran {
         }
     }
 
+    /**
+     * Permet de sélectionne une phrase et une catégorie
+     * @retur la phrase
+     */
     private static String selectionnePhrase() {
         
         String[] celebrites = {"Célébrités","ANGELINA /JOLIE","GEORGE /CLOONEY"};
@@ -91,19 +108,21 @@ public class Ecran {
         int randomPhrase = (int) (1+Math.random() * (tabCategorie[randomCategorie].length-1));
         System.out.println(randomCategorie + "  "+randomPhrase);
         tmpPhrase = tabCategorie[randomCategorie][randomPhrase];
-
         categorie = tabCategorie[randomCategorie][0];
-
-
         return tmpPhrase;
-
     }
 
+    /**
+     * Vérifie s'il reste des lettres à trouver ou si tout a été affiché
+     * @return true s'il reste des lettres, ou au contraire false
+     */
     public static boolean resteLettre() {
-
         return listeIndices.size() >= 1;
     }
 
+    /**
+     * Affcihe une lettre au hasard
+     */
     public static void afficherUneLettre() {
         int taille = listeIndices.size();
         int random = (int) (Math.random() * (taille));
@@ -113,6 +132,9 @@ public class Ecran {
         afficherEcran();
     }
 
+    /**
+     * Liste les lettres à trouver
+     */
     public static void inscriptionCacheALEcran() {
         listeIndices.clear();
         for (int i = 0; i<4; i++){
@@ -124,10 +146,13 @@ public class Ecran {
                 }
             }
         }
-        //System.out.println("TAILLE : "+listeIndices.size());
     }
 
-
+    /**
+     * Affiche toutes les lettres du char en attribut
+     * @param lettre La lettre à afficher
+     * @return Si oui ou non la lettre donné est bien présente sur l'écran
+     */
     public static boolean afficherToutesLesLettres(char lettre) {
         int taille = listeIndices.size();
         int[] tableauCaseAAfficher;
@@ -188,6 +213,10 @@ public class Ecran {
         return trouve;
     }
 
+    /**
+     * Recoustruit la phrase en langage courant (fr)
+     * @return La réponse
+     */
     public static String phraseReponse() {
         String phraseReponse = phrase;
         phraseReponse = phraseReponse.replace("/", "");

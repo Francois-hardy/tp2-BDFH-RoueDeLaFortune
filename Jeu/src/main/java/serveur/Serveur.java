@@ -85,7 +85,7 @@ public class Serveur {
 
         Configuration config = new Configuration();
         config.setHostname("127.0.0.1"); //134.59.2.116
-        config.setPort(10101);
+        config.setPort(10101);;
 
         config.setHttpCompression(false);
         config.setWebsocketCompression(false);
