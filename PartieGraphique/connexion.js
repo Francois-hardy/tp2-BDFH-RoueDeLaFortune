@@ -8,6 +8,15 @@ socket.on('connect', (data) => {
     socket.emit('ajout_jeu', 'ajout_jeu');
 });
 
+socket.on('nombre_en_attente', (data) => {
+    var nbrPersonne = document.getElementById("nombreActuelPersonne");
+    nbrPersonne.innerHTML = data;
+    if (data === 3) {
+        var affichageNbrPersonne = document.getElementById("nombrePersonne");
+        affichageNbrPersonne.remove();
+    }
+});
+
 socket.on('lancement', (data) => {
     launchWheel();
     socket.emit('demarrage', 'demarrage');

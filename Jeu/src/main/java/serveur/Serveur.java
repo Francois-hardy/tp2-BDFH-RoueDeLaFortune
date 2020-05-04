@@ -40,6 +40,7 @@ public class Serveur {
             if (!session_connectee.contains(socketIOClient.getSessionId())) {
                 session_connectee.add(socketIOClient.getSessionId());
                 socketIOClient.joinRoom("attente");
+                server.getRoomOperations("attente").sendEvent("nombre_en_attente", session_connectee.size());
             }
 
             if (session_connectee.size() >= 3) {
