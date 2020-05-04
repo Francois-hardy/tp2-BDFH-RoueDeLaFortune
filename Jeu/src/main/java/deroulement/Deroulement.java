@@ -4,8 +4,6 @@ import architecture.Ecran;
 import architecture.RoueJeu;
 import joueurs.Candidat;
 
-import java.io.IOException;
-
 /**
  * Classe static permettant le déroulement du jeu
  */

@@ -93,7 +93,7 @@ public class Ecran {
 
     /**
      * Permet de sélectionne une phrase et une catégorie
-     * @retur la phrase
+     * @return la phrase
      */
     private static String selectionnePhrase() {
         
