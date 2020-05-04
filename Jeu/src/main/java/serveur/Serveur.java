@@ -41,10 +41,7 @@ public class Serveur {
             socketIOClient.sendEvent("phrase", (Object) Ecran.tableauEcran);
         });
 
-        server.addEventListener("action_buzz", String.class, (socketIOClient, s, ackRequest) -> {
-
-            buzze = true;
-        });
+        server.addEventListener("action_buzz", String.class, (socketIOClient, s, ackRequest) -> buzze = true);
 
         server.addEventListener("retourNombre", String.class, (socketIOClient, s, ackRequest) ->
                 System.out.println(s));
@@ -75,6 +72,7 @@ public class Serveur {
     /**
      * Programme principale gérant les options du serveur
      * @param args Arguments
+     * @throws InterruptedException erreur impossible
      */
     public static void main(String [] args) throws InterruptedException {
         try {
@@ -85,7 +83,7 @@ public class Serveur {
 
         Configuration config = new Configuration();
         config.setHostname("127.0.0.1"); //134.59.2.116
-        config.setPort(10101);;
+        config.setPort(10101);
 
         config.setHttpCompression(false);
         config.setWebsocketCompression(false);

@@ -6,6 +6,9 @@ import joueurs.Candidat;
 
 import java.io.IOException;
 
+/**
+ * Classe static permettant le déroulement du jeu
+ */
 public class Deroulement {
     public static Candidat candidatMain;
     public static Candidat[] tabCandidats;
@@ -31,7 +34,7 @@ public class Deroulement {
         return candidatMain;
     }
 
-    public static void lancerManche() throws IOException {
+    public static void lancerManche() {
         if(mancheActuelle <4){
             mancheActuelle++;
             System.out.println("Manche "+ mancheActuelle);
