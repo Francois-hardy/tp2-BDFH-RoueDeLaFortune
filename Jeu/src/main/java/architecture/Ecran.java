@@ -106,7 +106,7 @@ public class Ecran {
         String[][] tabCategorie = {celebrites,informatique,objets,presidents};
         int randomCategorie = (int) (Math.random() * (tabCategorie.length));
         int randomPhrase = (int) (1+Math.random() * (tabCategorie[randomCategorie].length-1));
-        System.out.println(randomCategorie + "  "+randomPhrase);
+        //System.out.println(randomCategorie + "  "+randomPhrase);
         tmpPhrase = tabCategorie[randomCategorie][randomPhrase];
         categorie = tabCategorie[randomCategorie][0];
         return tmpPhrase;
