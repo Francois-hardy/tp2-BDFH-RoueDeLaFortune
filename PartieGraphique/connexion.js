@@ -9,6 +9,7 @@ socket.on('connect', (data) => {
 });
 
 socket.on('lancement', (data) => {
+    launchWheel();
     socket.emit('demarrage', 'demarrage');
 });
 
@@ -263,7 +264,5 @@ function buzzer() {
     var phrase_tentative = window.prompt("Entrer la phrase :");
     socket.emit('envoie_phrase_buzz', phrase_tentative);
 }
-
-launchWheel();
 
 //socket.on('disconnect', function(){});
