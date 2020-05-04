@@ -1,5 +1,13 @@
 # tp2-BDFH-RoueDeLaFortune
 
+https://github.com/Francois-hardy/tp2-BDFH-RoueDeLaFortune
+
+**Contributeurs**
+- François HARDY
+- Grégory BARTOLO
+- Julian FERRARINI
+- Théo DE ALMEIDA
+
 **Lancement du jeu**
 
 - Racine > PartieGraphique > Ouvrir index.html dans votre navigateur
