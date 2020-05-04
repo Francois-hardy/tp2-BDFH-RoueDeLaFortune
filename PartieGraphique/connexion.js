@@ -1,10 +1,14 @@
 var phrase;
 
-var socket = io('127.0.0.1:10101'); //134.59.2.13
+var socket = io('127.0.0.1:10101', {forceNew: true}); //134.59.2.13
 
 socket.on('event', function(data){});
 
 socket.on('connect', (data) => {
+    socket.emit('ajout_jeu', 'ajout_jeu');
+});
+
+socket.on('lancement', (data) => {
     socket.emit('demarrage', 'demarrage');
 });
 

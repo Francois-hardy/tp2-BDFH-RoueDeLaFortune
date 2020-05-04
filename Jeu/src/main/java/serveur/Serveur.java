@@ -7,6 +7,8 @@ import com.corundumstudio.socketio.SocketIOServer;
 import deroulement.Deroulement;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 
@@ -20,6 +22,7 @@ public class Serveur {
     private static boolean buzze = false;
     private static String reponseBuzze = "mauvais";
     private static boolean valide = false;
+    private static final ArrayList<UUID> session_connectee = new ArrayList<>();
 
 
     /**
@@ -33,7 +36,23 @@ public class Serveur {
         //Démarre un thread, le programme ne s'arrêtera pas tant que le serveur n'est pas terminé
         server.start();
 
+        server.addEventListener("ajout_jeu", String.class, (socketIOClient, s, ackRequest) -> {
+            if (!session_connectee.contains(socketIOClient.getSessionId())) {
+                session_connectee.add(socketIOClient.getSessionId());
+                socketIOClient.joinRoom("attente");
+            }
+
+            if (session_connectee.size() >= 3) {
+                //test d'envoi a chaque user de son id server
+                /*for (UUID user : session_connectee) {
+                    server.getClient(user).sendEvent("ton_id", user);
+                }*/
+                server.getRoomOperations("attente").sendEvent("lancement", "lancement");
+            }
+        });
+
         server.addEventListener("demarrage", String.class, (socketIOClient, s, ackRequest) -> {
+            //System.out.println(socketIOClient.getSessionId());
             while (Ecran.listeIndices.size() > 0){
                 socketIOClient.sendEvent("phrase", (Object) Ecran.tableauEcran);
                 TimeUnit.MILLISECONDS.sleep(500);
@@ -89,11 +108,11 @@ public class Serveur {
 
         config.setHttpCompression(false);
         config.setWebsocketCompression(false);
+
         Serveur serveur = new Serveur(config);
 
 
-
-
+        //lancement réel du jeu
         Deroulement.setCandidats();
         Ecran.creerEcran();
         RoueJeu.creerRoueJeu();
