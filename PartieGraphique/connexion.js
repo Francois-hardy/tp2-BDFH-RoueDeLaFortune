@@ -11,7 +11,9 @@ socket.on('connect', (data) => {
 socket.on('nombre_en_attente', (data) => {
     var nbrPersonne = document.getElementById("nombreActuelPersonne");
     nbrPersonne.innerHTML = data + " / 3";
-    if (data === 3) {
+    if (data === 1) {
+        document.getElementById("fond").className = "fondInGame";
+
         var affichageNbrPersonne = document.getElementById("nombrePersonne");
         affichageNbrPersonne.remove();
 

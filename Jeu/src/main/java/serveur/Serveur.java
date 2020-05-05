@@ -43,7 +43,7 @@ public class Serveur {
                 server.getRoomOperations("attente").sendEvent("nombre_en_attente", session_connectee.size());
             }
 
-            if (session_connectee.size() >= 3) {
+            if (session_connectee.size() >= 1) {
                 //test d'envoi a chaque user de son id server
                 /*for (UUID user : session_connectee) {
                     server.getClient(user).sendEvent("ton_id", user);
