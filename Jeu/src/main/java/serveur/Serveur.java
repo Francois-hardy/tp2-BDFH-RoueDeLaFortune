@@ -36,13 +36,17 @@ public class Serveur {
         //Démarre un thread, le programme ne s'arrêtera pas tant que le serveur n'est pas terminé
         server.start();
 
+        // Récupère les joueurs qui seront mis en file d'attente
         server.addEventListener("ajout_jeu", String.class, (socketIOClient, s, ackRequest) -> {
+            // Ajoute le joueur arrivant dans la file d'attente
             if (!session_connectee.contains(socketIOClient.getSessionId())) {
                 session_connectee.add(socketIOClient.getSessionId());
                 socketIOClient.joinRoom("attente");
+                //Renvoie aux clients le nombre de joueurs en attente
                 server.getRoomOperations("attente").sendEvent("nombre_en_attente", session_connectee.size());
             }
 
+            // Demarre le jeu quand le nombre de joueurs en attente est satisfaisant
             if (session_connectee.size() >= 1) {
                 //test d'envoi a chaque user de son id server
                 /*for (UUID user : session_connectee) {

@@ -54,6 +54,10 @@ td {
     text-align: center;
 }
 
+#zoneCanvas {
+    z-index: 1;
+}
+
 #buzzer {
     width: 44%;
     height: 19%;

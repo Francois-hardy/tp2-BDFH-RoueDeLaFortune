@@ -4,19 +4,26 @@ var socket = io('127.0.0.1:10101', {forceNew: true}); //134.59.2.13
 
 socket.on('event', function(data){});
 
+//Connexion au jeu et ajout à la file d'attente
 socket.on('connect', (data) => {
     socket.emit('ajout_jeu', 'ajout_jeu');
 });
 
+//Modification nécessaire quand un joueur se rajoute à la file d'attente
 socket.on('nombre_en_attente', (data) => {
+    //Modification du nombre de personne affiché en attente
     var nbrPersonne = document.getElementById("nombreActuelPersonne");
     nbrPersonne.innerHTML = data + " / 3";
+
+    //Si nombre de personne suffisant on affiche le jeu
     if (data === 1) {
         document.getElementById("fond").className = "fondInGame";
 
+        //On retire le nombre de joueur en attente
         var affichageNbrPersonne = document.getElementById("nombrePersonne");
         affichageNbrPersonne.remove();
 
+        //Création du buzzer et mise en place de celui-ci
         var buzzerInstance = document.createElement("button");
         buzzerInstance.setAttribute("id", "buzzer");
         buzzerInstance.setAttribute("class", "button");
@@ -24,20 +31,27 @@ socket.on('nombre_en_attente', (data) => {
         buzzerInstance.innerText = "BUZZER";
 
         var buzzerEmplacement = document.getElementById("buzzerEmplacement");
+        buzzerEmplacement.setAttribute("style", "z-index : 2")
         buzzerEmplacement.appendChild(buzzerInstance);
 
+        //Affichage des images de joueurs
+        var joueurs = document.getElementById("players");
+        joueurs.style = "";
     }
 });
 
+// Démarrage du jeu avec affichage de la roue
 socket.on('lancement', (data) => {
     launchWheel();
     socket.emit('demarrage', 'demarrage');
 });
 
+// Modification de la phrase en cours sur le tableau de jeu
 socket.on('phrase', (data) => {
     drawGame(data);
 });
 
+// Dessine la roue
 function launchWheel() {
     let canvas = document.getElementById("canvas");
 
@@ -190,6 +204,7 @@ function launchWheel() {
 
 }
 
+// Dessine le tableau de jeu
 function drawGame(data) {
     var table = document.getElementById("jeu");
     table.innerHTML = "";
