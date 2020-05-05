@@ -28,7 +28,7 @@
 }
 
 .fondInGame {
-    background-color: mediumpurple;
+    background-color: skyblue;
 }
 
 td {
@@ -55,7 +55,7 @@ td {
 }
 
 #canvas {
-    width: 180%;
+    width: 170%;
 }
 
 #nombrePersonne {
