@@ -21,6 +21,7 @@ socket.on('nombre_en_attente', (data) => {
         buzzerInstance.setAttribute("id", "buzzer");
         buzzerInstance.setAttribute("class", "button");
         buzzerInstance.setAttribute("onclick", "buzzer()");
+        buzzerInstance.innerText = "BUZZER";
 
         var buzzerEmplacement = document.getElementById("buzzerEmplacement");
         buzzerEmplacement.appendChild(buzzerInstance);
