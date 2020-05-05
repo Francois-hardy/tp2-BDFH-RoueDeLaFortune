@@ -17,11 +17,10 @@ socket.on('nombre_en_attente', (data) => {
         var affichageNbrPersonne = document.getElementById("nombrePersonne");
         affichageNbrPersonne.remove();
 
-        var buzzerInstance = document.createElement("input");
+        var buzzerInstance = document.createElement("button");
         buzzerInstance.setAttribute("id", "buzzer");
-        buzzerInstance.setAttribute("type", "image");
+        buzzerInstance.setAttribute("class", "button");
         buzzerInstance.setAttribute("onclick", "buzzer()");
-        buzzerInstance.setAttribute("src", "buzzer.jpg");
 
         var buzzerEmplacement = document.getElementById("buzzerEmplacement");
         buzzerEmplacement.appendChild(buzzerInstance);
