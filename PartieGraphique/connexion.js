@@ -1,6 +1,6 @@
 var phrase;
 
-var socket = io('127.0.0.1:10101', {forceNew: true}); //134.59.2.13
+var socket = io('http://rouefortune.herokuapp.com:49999/', {forceNew: true}); //134.59.2.13
 
 socket.on('event', function(data){});
 
@@ -16,7 +16,7 @@ socket.on('nombre_en_attente', (data) => {
     nbrPersonne.innerHTML = data + " / 3";
 
     //Si nombre de personne suffisant on affiche le jeu
-    if (data === 1) {
+    if (data === 2) {
         document.getElementById("fond").className = "fondInGame";
 
         //On retire le nombre de joueur en attente
@@ -42,7 +42,6 @@ socket.on('nombre_en_attente', (data) => {
     }
 });
 
-// Modification de la phrase en cours sur le tableau de jeu
 socket.on('envoi_username', (data) => {
     console.log(data);
     if (data === 1) {
@@ -57,6 +56,14 @@ socket.on('envoi_username', (data) => {
         var nomJoueur = document.getElementById("user3");
         nomJoueur.style = "color : red;"
     }
+});
+
+socket.on('buzzGris', (data) => {
+    var buzzerActuel = document.getElementById("buzzer");
+    buzzerActuel.style = "background-color : dimgrey";
+
+    var phrase_tentative = window.prompt("Entrer la phrase :");
+    socket.emit('envoie_phrase_buzz', phrase_tentative);
 });
 
 // Modification de la phrase en cours sur le tableau de jeu
@@ -310,8 +317,6 @@ function drawGame(data) {
 
 function buzzer() {
     socket.emit('action_buzz', 'action_buzz');
-    var phrase_tentative = window.prompt("Entrer la phrase :");
-    socket.emit('envoie_phrase_buzz', phrase_tentative);
 }
 
 //socket.on('disconnect', function(){});
