@@ -47,7 +47,7 @@ public class Serveur {
             }
 
             // Demarre le jeu quand le nombre de joueurs en attente est satisfaisant
-            if (session_connectee.size() >= 2) {
+            if (session_connectee.size() >= 1) {
                 //test d'envoi a chaque user de son id server
                 int i = 1;
                 for (UUID user : session_connectee) {
@@ -115,7 +115,6 @@ public class Serveur {
         });
 
         server.addEventListener("action_buzz", String.class, (socketIOClient, s, ackRequest) -> {
-            server.getRoomOperations("attente").sendEvent("buzzGris", "buzzGris");
             buzze = true;
             System.out.println("BUZZ");
         });
@@ -156,8 +155,8 @@ public class Serveur {
         }
 
         Configuration config = new Configuration();
-        config.setHostname("0.0.0.0"); //134.59.2.116
-        config.setPort(49999);
+        config.setHostname("127.0.0.1"); //134.59.2.116
+        config.setPort(10101);
 
         config.setHttpCompression(false);
         config.setWebsocketCompression(false);
