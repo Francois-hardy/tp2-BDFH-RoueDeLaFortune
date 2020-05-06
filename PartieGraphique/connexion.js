@@ -42,6 +42,22 @@ socket.on('nombre_en_attente', (data) => {
     }
 });
 
+// Modification de la phrase en cours sur le tableau de jeu
+socket.on('envoi_username', (data) => {
+    console.log(data);
+    if (data === 1) {
+        var nomJoueur = document.getElementById("user1");
+        nomJoueur.style = "color : red;"
+    }
+    else if (data === 2) {
+        var nomJoueur = document.getElementById("user2");
+        nomJoueur.style = "color : red;"
+    }
+    else {
+        var nomJoueur = document.getElementById("user3");
+        nomJoueur.style = "color : red;"
+    }
+});
 
 // Modification de la phrase en cours sur le tableau de jeu
 socket.on('phrase', (data) => {

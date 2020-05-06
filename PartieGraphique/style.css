@@ -108,7 +108,6 @@ td {
 }
 
 #player2 {
-    margin-top: -37%;
     transform: rotate(-90deg);
 }
 
@@ -116,4 +115,23 @@ td {
     margin-top: 45%;
     transform: rotate(-70deg);
     margin-left: -3%;
+}
+
+#rowPlayer1 {
+    margin-bottom: -46%;
+}
+
+#user1 {
+    padding-top: 36%;
+    margin-left: 53%;
+}
+
+#user2 {
+    padding-top: 14%;
+    margin-left: -5%;
+}
+
+#user3 {
+    padding-top: 56%;
+    margin-left: 3%;
 }

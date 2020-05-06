@@ -49,9 +49,11 @@ public class Serveur {
             // Demarre le jeu quand le nombre de joueurs en attente est satisfaisant
             if (session_connectee.size() >= 1) {
                 //test d'envoi a chaque user de son id server
-                /*for (UUID user : session_connectee) {
-                    server.getClient(user).sendEvent("ton_id", user);
-                }*/
+                int i = 1;
+                for (UUID user : session_connectee) {
+                    server.getClient(user).sendEvent("envoi_username", i);
+                    i++;
+                }
 
                 //lancement réel du jeu
                 Deroulement.setCandidats();
@@ -81,7 +83,6 @@ public class Serveur {
                                     valide = false;
                                     buzze = false;
                                     reponseBuzze = " ";
-
                                 } else  {
                                     valide = false;
                                     buzze = false;
@@ -98,6 +99,8 @@ public class Serveur {
                         }
                     }
                 }
+
+
             }
         });
 
