@@ -62,7 +62,8 @@ public class Serveur {
                     Ecran.selectionnePhrase();
                     Ecran.inscriptionCacheALEcran();
                     Ecran.afficherEcran();
-                    TimeUnit.MILLISECONDS.sleep(500);
+
+
                     while (Ecran.listeIndices.size() > 0) {
                         if (!buzze) {
                             Ecran.afficherUneLettre();
@@ -101,6 +102,9 @@ public class Serveur {
                     }
                     TimeUnit.MILLISECONDS.sleep(5000);
                     Ecran.vide();
+                    server.getRoomOperations("attente").sendEvent("phrase", (Object) Ecran.tableauEcran);
+                    TimeUnit.MILLISECONDS.sleep(2000);
+                    Ecran.prochaineManche();
                     server.getRoomOperations("attente").sendEvent("phrase", (Object) Ecran.tableauEcran);
                     TimeUnit.MILLISECONDS.sleep(3000);
                 }

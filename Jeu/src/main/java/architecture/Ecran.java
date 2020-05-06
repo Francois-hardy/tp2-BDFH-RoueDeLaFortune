@@ -230,4 +230,26 @@ public class Ecran {
         tableauEcran[3][13] = '!';
     }
 
+    public static void prochaineManche() {
+        phrase = "PROCHAINE/MANCHE...";
+        int col = 3;
+        int ligne = 2;
+        for(int i = 0; i< phrase.length(); i++){
+            if(phrase.charAt(i) == '/'){
+                ligne++;
+                col = 3;
+            }
+            else{
+                tableauEcran[ligne-1][col-1] = phrase.charAt(i);
+                if(col >= 13){
+                    ligne++;
+                    col = 3;
+                }
+                else {
+                    col++;
+                }
+            }
+        }
+    }
+
 }
