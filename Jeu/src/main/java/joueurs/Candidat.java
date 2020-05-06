@@ -9,25 +9,36 @@ import java.util.Random;
 
 import static deroulement.Deroulement.*;
 
+/**
+ * Classe permettant de creer les candidats
+ */
 public class Candidat {
-
-
     private final String nom;
     public int solde;
     public static int[] soldeTotalJoueur = new int[3];
     public static int[][] soldeTotal = new int[4][3];
     private static final ArrayList<Character> listeCharUtilise = new ArrayList<>();
 
+    /**
+     * Construteur permettant d'initialiser un candidat
+     * @param nom nom du candidat
+     */
     public Candidat(String nom){
         this.nom = nom;
     }
 
+    /**
+     * Permet d'enregistrer les soldes de chaque candidat, avant de commencer une nouvelle manche
+     */
     public static void enregistrerSolde() {
         soldeTotal[mancheActuelle-1][0] = candidat1.solde;
         soldeTotal[mancheActuelle-1][1] = candidat2.solde;
         soldeTotal[mancheActuelle-1][2] = candidat3.solde;
     }
 
+    /**
+     * Permet d'affiche les soldes toatal de toutes le smanches depuis le début
+     */
     public static void afficherLesSoldesTotals() {
         soldeTotalJoueur[0] = soldeTotal[0][0] + soldeTotal[1][0] + soldeTotal[2][0] + soldeTotal[3][0];
         soldeTotalJoueur[1] = soldeTotal[0][1] + soldeTotal[1][1] + soldeTotal[2][1] + soldeTotal[3][1];
@@ -37,12 +48,19 @@ public class Candidat {
         System.out.println("Candidat " + candidat3.getNom() + " : " + soldeTotalJoueur[2]);
     }
 
+    /**
+     * Remettre les soldes de manche à 0
+     */
     public static void clearSolde() {
         candidat1.solde = 0;
         candidat2.solde = 0;
         candidat3.solde = 0;
     }
 
+    /**
+     * Détermine qui est en final
+     * @return Le nom du finaliste
+     */
     public static String enFinal() {
         if (Candidat.soldeTotalJoueur[0] > Candidat.soldeTotalJoueur[1]){
             if (Candidat.soldeTotalJoueur[0] > Candidat.soldeTotalJoueur[2]){
