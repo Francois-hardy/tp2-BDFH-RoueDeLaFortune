@@ -65,11 +65,6 @@ public class Ecran {
      * Permet de faire un traitement de la pharse pour l'afficher à l'écran
      */
     public static void choixDeLaPhrase()  {
-        //phrase = selectionnePhrase();
-        //phrase = "UN FEU /D'ARTIFICE";
-        //phrase = "CONNEXION /CLIENT /SERVEUR";
-        phrase = selectionnePhrase();
-
         int col = 3;
         int ligne = 2;
         for(int i = 0; i< phrase.length(); i++){
@@ -93,9 +88,8 @@ public class Ecran {
 
     /**
      * Permet de sélectionne une phrase et une catégorie
-     * @return la phrase
      */
-    private static String selectionnePhrase() {
+    public static void selectionnePhrase() {
         
         String[] celebrites = {"Célébrités","ANGELINA /JOLIE","GEORGE /CLOONEY"};
         String[] informatique = {"Informatique","CONNEXION /CLIENT /SERVEUR","PROTOCOLE /TCP UDP"};
@@ -109,7 +103,8 @@ public class Ecran {
         //System.out.println(randomCategorie + "  "+randomPhrase);
         tmpPhrase = tabCategorie[randomCategorie][randomPhrase];
         categorie = tabCategorie[randomCategorie][0];
-        return tmpPhrase;
+        phrase = tmpPhrase;
+        choixDeLaPhrase();
     }
 
     /**
@@ -222,4 +217,39 @@ public class Ecran {
         phraseReponse = phraseReponse.replace("/", "");
         return phraseReponse;
     }
+
+    public static void vide() {
+        for (int i = 0; i<4; i++){
+            for (int j = 0; j<14; j++){
+                tableauEcran[i][j] = ' ';
+            }
+        }
+        tableauEcran[0][0] = '!';
+        tableauEcran[0][13] = '!';
+        tableauEcran[3][0] = '!';
+        tableauEcran[3][13] = '!';
+    }
+
+    public static void prochaineManche() {
+        phrase = "PROCHAINE/MANCHE...";
+        int col = 3;
+        int ligne = 2;
+        for(int i = 0; i< phrase.length(); i++){
+            if(phrase.charAt(i) == '/'){
+                ligne++;
+                col = 3;
+            }
+            else{
+                tableauEcran[ligne-1][col-1] = phrase.charAt(i);
+                if(col >= 13){
+                    ligne++;
+                    col = 3;
+                }
+                else {
+                    col++;
+                }
+            }
+        }
+    }
+
 }
