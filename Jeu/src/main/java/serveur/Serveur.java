@@ -52,20 +52,59 @@ public class Serveur {
                 /*for (UUID user : session_connectee) {
                     server.getClient(user).sendEvent("ton_id", user);
                 }*/
-                server.getRoomOperations("attente").sendEvent("lancement", "lancement");
-            }
-        });
 
-        server.addEventListener("demarrage", String.class, (socketIOClient, s, ackRequest) -> {
-            //System.out.println(socketIOClient.getSessionId());
-            while (Ecran.listeIndices.size() > 0){
-                socketIOClient.sendEvent("phrase", (Object) Ecran.tableauEcran);
+                //lancement réel du jeu
+                Deroulement.setCandidats();
+                Ecran.creerEcran();
+                RoueJeu.creerRoueJeu();
+                Ecran.choixDeLaPhrase();
+                Ecran.inscriptionCacheALEcran();
+                Ecran.afficherEcran();
                 TimeUnit.MILLISECONDS.sleep(500);
+
+                while (Ecran.listeIndices.size() > 0) {
+                    if (!buzze) {
+                        Ecran.afficherUneLettre();
+                        server.getRoomOperations("attente").sendEvent("phrase", (Object) Ecran.tableauEcran);
+                        TimeUnit.MILLISECONDS.sleep(500);
+                    }
+                    else {
+                        TimeUnit.MILLISECONDS.sleep(50);
+                        if (valide) {
+                            try {
+                                if (reponseBuzze.equalsIgnoreCase(Ecran.phraseReponse())) {
+                                    System.out.println("Bonne réponse");
+                                    while (Ecran.listeIndices.size() > 0) {
+                                        Ecran.afficherUneLettre();
+                                    }
+                                    server.getRoomOperations("attente").sendEvent("phrase", (Object) Ecran.tableauEcran);
+                                    valide = false;
+                                    buzze = false;
+                                    reponseBuzze = " ";
+
+                                } else  {
+                                    valide = false;
+                                    buzze = false;
+                                    reponseBuzze = " ";
+                                    System.out.println("Mauvaise réponse");
+                                }
+                            }
+                            catch (Exception ignored){
+                                valide = false;
+                                buzze = false;
+                                reponseBuzze = " ";
+                                System.out.println("Mauvaise réponse");
+                            }
+                        }
+                    }
+                }
             }
-            socketIOClient.sendEvent("phrase", (Object) Ecran.tableauEcran);
         });
 
-        server.addEventListener("action_buzz", String.class, (socketIOClient, s, ackRequest) -> buzze = true);
+        server.addEventListener("action_buzz", String.class, (socketIOClient, s, ackRequest) -> {
+            buzze = true;
+            System.out.println("BUZZ");
+        });
 
         server.addEventListener("retourNombre", String.class, (socketIOClient, s, ackRequest) ->
                 System.out.println(s));
@@ -74,7 +113,6 @@ public class Serveur {
                 socketIOClient.sendEvent("categorie", Ecran.categorie));
 
         server.addEventListener("envoie_phrase_buzz", String.class, (socketIOClient, s, ackRequest) -> {
-            //a remplir par francois le bg
             try {
                 if (s.equals("null")){
                     s = "mauvais";
@@ -86,7 +124,6 @@ public class Serveur {
 
             reponseBuzze = s;
             valide = true;
-
         });
     }
 
@@ -113,54 +150,5 @@ public class Serveur {
         config.setWebsocketCompression(false);
 
         Serveur serveur = new Serveur(config);
-
-
-        //lancement réel du jeu
-        Deroulement.setCandidats();
-        Ecran.creerEcran();
-        RoueJeu.creerRoueJeu();
-        Ecran.choixDeLaPhrase();
-        Ecran.inscriptionCacheALEcran();
-        Ecran.afficherEcran();
-        TimeUnit.MILLISECONDS.sleep(3000);
-
-        while (Ecran.listeIndices.size() > 0){
-            if(buzze){
-                System.out.println("BUZZ");
-                if(valide) {
-                    System.out.println("VALIDE");
-                    try {
-                        if (reponseBuzze.equalsIgnoreCase(Ecran.phraseReponse())) {
-                            System.out.println("Bonne réponse");
-                            while (Ecran.listeIndices.size() > 0) {
-                                Ecran.afficherUneLettre();
-                            }
-                            valide = false;
-                            buzze = false;
-                            reponseBuzze = " ";
-
-                        } else  {
-                            valide = false;
-                            buzze = false;
-                            reponseBuzze = " ";
-                            System.out.println("Mauvaise réponse");
-                        }
-                    }
-                    catch (Exception ignored){
-                        valide = false;
-                        buzze = false;
-                        reponseBuzze = " ";
-                        System.out.println("perdu");
-                    }
-                }
-            }
-            else {
-                Ecran.afficherUneLettre();
-                TimeUnit.MILLISECONDS.sleep(1000);
-            }
-        }
-        TimeUnit.MILLISECONDS.sleep(3000);
-
-
     }
 }

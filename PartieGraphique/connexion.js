@@ -37,14 +37,11 @@ socket.on('nombre_en_attente', (data) => {
         //Affichage des images de joueurs
         var joueurs = document.getElementById("players");
         joueurs.style = "";
+
+        launchWheel();
     }
 });
 
-// Démarrage du jeu avec affichage de la roue
-socket.on('lancement', (data) => {
-    launchWheel();
-    socket.emit('demarrage', 'demarrage');
-});
 
 // Modification de la phrase en cours sur le tableau de jeu
 socket.on('phrase', (data) => {
