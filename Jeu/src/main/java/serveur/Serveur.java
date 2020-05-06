@@ -54,50 +54,57 @@ public class Serveur {
                 }*/
 
                 //lancement réel du jeu
-                Deroulement.setCandidats();
-                Ecran.creerEcran();
-                RoueJeu.creerRoueJeu();
-                Ecran.choixDeLaPhrase();
-                Ecran.inscriptionCacheALEcran();
-                Ecran.afficherEcran();
-                TimeUnit.MILLISECONDS.sleep(500);
 
-                while (Ecran.listeIndices.size() > 0) {
-                    if (!buzze) {
-                        Ecran.afficherUneLettre();
-                        server.getRoomOperations("attente").sendEvent("phrase", (Object) Ecran.tableauEcran);
-                        TimeUnit.MILLISECONDS.sleep(500);
-                    }
-                    else {
-                        TimeUnit.MILLISECONDS.sleep(50);
-                        if (valide) {
-                            try {
-                                if (reponseBuzze.equalsIgnoreCase(Ecran.phraseReponse())) {
-                                    System.out.println("Bonne réponse");
-                                    while (Ecran.listeIndices.size() > 0) {
-                                        Ecran.afficherUneLettre();
+                while (true){
+                    Deroulement.setCandidats();
+                    Ecran.creerEcran();
+                    RoueJeu.creerRoueJeu();
+                    Ecran.selectionnePhrase();
+                    Ecran.inscriptionCacheALEcran();
+                    Ecran.afficherEcran();
+                    TimeUnit.MILLISECONDS.sleep(500);
+                    while (Ecran.listeIndices.size() > 0) {
+                        if (!buzze) {
+                            Ecran.afficherUneLettre();
+                            server.getRoomOperations("attente").sendEvent("phrase", (Object) Ecran.tableauEcran);
+                            TimeUnit.MILLISECONDS.sleep(500);
+                        }
+                        else {
+                            TimeUnit.MILLISECONDS.sleep(50);
+                            if (valide) {
+                                try {
+                                    if (reponseBuzze.equalsIgnoreCase(Ecran.phraseReponse())) {
+                                        System.out.println("Bonne réponse");
+                                        while (Ecran.listeIndices.size() > 0) {
+                                            Ecran.afficherUneLettre();
+                                        }
+                                        server.getRoomOperations("attente").sendEvent("phrase", (Object) Ecran.tableauEcran);
+                                        valide = false;
+                                        buzze = false;
+                                        reponseBuzze = " ";
+
+                                    } else  {
+                                        valide = false;
+                                        buzze = false;
+                                        reponseBuzze = " ";
+                                        System.out.println("Mauvaise réponse");
                                     }
-                                    server.getRoomOperations("attente").sendEvent("phrase", (Object) Ecran.tableauEcran);
-                                    valide = false;
-                                    buzze = false;
-                                    reponseBuzze = " ";
-
-                                } else  {
+                                }
+                                catch (Exception ignored){
                                     valide = false;
                                     buzze = false;
                                     reponseBuzze = " ";
                                     System.out.println("Mauvaise réponse");
                                 }
                             }
-                            catch (Exception ignored){
-                                valide = false;
-                                buzze = false;
-                                reponseBuzze = " ";
-                                System.out.println("Mauvaise réponse");
-                            }
                         }
                     }
+                    TimeUnit.MILLISECONDS.sleep(5000);
+                    Ecran.vide();
+                    server.getRoomOperations("attente").sendEvent("phrase", (Object) Ecran.tableauEcran);
+                    TimeUnit.MILLISECONDS.sleep(3000);
                 }
+
             }
         });
 
@@ -133,9 +140,8 @@ public class Serveur {
     /**
      * Programme principale gérant les options du serveur
      * @param args Arguments
-     * @throws InterruptedException erreur impossible
      */
-    public static void main(String [] args) throws InterruptedException {
+    public static void main(String [] args) {
         try {
             System.setOut(new PrintStream(System.out, true, "UTF-8"));
         } catch (UnsupportedEncodingException e) {
