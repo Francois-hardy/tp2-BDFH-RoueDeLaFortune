@@ -1,6 +1,6 @@
 var phrase;
 
-var socket = io('127.0.0.1:10101', {forceNew: true}); //134.59.2.13
+var socket = io('http://127.0.0.1:49999');
 
 socket.on('event', function(data){});
 
