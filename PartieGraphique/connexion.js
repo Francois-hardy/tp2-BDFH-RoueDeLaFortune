@@ -1,6 +1,6 @@
 var phrase;
 
-var socket = io('http://127.0.0.1:49999');
+var socket = io('127.0.0.1:49999');
 
 socket.on('event', function(data){});
 
@@ -16,7 +16,7 @@ socket.on('nombre_en_attente', (data) => {
     nbrPersonne.innerHTML = data + " / 3";
 
     //Si nombre de personne suffisant on affiche le jeu
-    if (data === 1) {
+    if (data === 3) {
         document.getElementById("fond").className = "fondInGame";
 
         //On retire le nombre de joueur en attente

@@ -47,7 +47,7 @@ public class Serveur {
             }
 
             // Demarre le jeu quand le nombre de joueurs en attente est satisfaisant
-            if (session_connectee.size() >= 1) {
+            if (session_connectee.size() >= 3) {
                 //test d'envoi a chaque user de son id server
                 int i = 1;
                 for (UUID user : session_connectee) {
